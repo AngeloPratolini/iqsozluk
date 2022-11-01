@@ -18,7 +18,7 @@ msgstr ""
 
 #: .\admin\__init__.py:20
 msgid "Administration"
-msgstr "Yönetim"
+msgstr "Sorumlu"
 
 #: .\admin\announcements.py:12
 msgid "Publish status"
@@ -58,7 +58,7 @@ msgstr "Erişilebilirlik detayları"
 
 #: .\admin\author.py:59 .\models\author.py:126
 msgid "Novice status"
-msgstr "Çaylak durumu"
+msgstr "Aday durumu"
 
 #: .\admin\author.py:62
 msgid "Important dates"
@@ -74,7 +74,7 @@ msgstr "Seçilen yazarları askıdan kaldır"
 
 #: .\admin\entry.py:23 .\admin\general_report.py:23 .\admin\topic.py:19
 msgid "Metadata"
-msgstr "Üstveri"
+msgstr "Metadata"
 
 #: .\admin\entry.py:40 .\models\category.py:66 .\models\entry.py:16
 #: .\models\topic.py:178
@@ -83,7 +83,7 @@ msgstr "Başlık"
 
 #: .\admin\entry.py:41
 msgid "Entry"
-msgstr "Entry"
+msgstr "Girdi"
 
 #: .\admin\flatpages.py:18
 msgid "Advanced options"
@@ -149,7 +149,7 @@ msgstr ""
 
 #: .\admin\topic.py:77
 msgid "Move entries from selected topics"
-msgstr "Seçili başlıklardaki entry'leri taşı"
+msgstr "Seçili başlıklardaki girdileri taşı"
 
 #: .\admin\views\author.py:28
 msgid "Suspend authors"
@@ -191,7 +191,7 @@ msgstr "Yazarların askıya alınmasını durdur"
 #: .\views\edit.py:29 .\views\edit.py:51 .\views\edit.py:72
 #: .\views\reporting.py:75
 msgid "we couldn't handle your request. try again later."
-msgstr "işleminizi gerçekleştiremedik. daha sonra tekrar deneyin."
+msgstr "işleminizi gerçekleştiremedik. Lütfen daha sonra tekrar deneyin."
 
 #: .\admin\views\author.py:111
 #, python-format
@@ -203,20 +203,20 @@ msgstr[1] "%(count)d yazarın askıdan alınma durumu sona erdi."
 #: .\admin\views\novices.py:27 .\templates\admin\app_list.html:47
 #: .\templates\admin\novice_lookup.html:8
 msgid "Novice review list"
-msgstr "Çaylak onay listesi"
+msgstr "Aday onay listesi"
 
 #: .\admin\views\novices.py:51
 msgid "The user is not on the novice list."
-msgstr "Kullanıcı çaylak listesinde değil."
+msgstr "Kullanıcı aday listesinde değil."
 
 #: .\admin\views\novices.py:55
 msgid "The user is not at the top of the novice list."
-msgstr "Kullanıcı çaylak listesinin başında değil."
+msgstr "Kullanıcı aday listesinin başında değil."
 
 #: .\admin\views\novices.py:68
 #, python-format
 msgid "First ten entries of: %(username)s"
-msgstr "%(username)s nickli kullanıcın ilk 10 entry'si"
+msgstr "%(username)s nickli kullanıcın ilk 10 girdisi"
 
 #: .\admin\views\novices.py:75
 msgid "The selected operation was invalid."
@@ -233,8 +233,8 @@ msgid ""
 "dear %(username)s, congratulations! your application of authorship has been "
 "approved. you can utilize your authorship by logging in."
 msgstr ""
-"sayın %(username)s, tebrikler! yazarlık başvurunuz kabul edildi. giriş "
-"yaparak yazar olmanın olanaklarından faydalanabilirsin."
+"sayın %(username)s, hoş geldiniz! yazarlık başvurunuz kabul edildi. giriş "
+"yaparak yazar olmanın sorumluluğunu alabilirsiniz."
 
 #: .\admin\views\novices.py:103
 msgid "your authorship has been approved"
@@ -243,7 +243,7 @@ msgstr "yazarlık başvurunuz kabul edildi"
 #: .\admin\views\novices.py:117
 #, python-format
 msgid "Authorship of the user '%(username)s' was rejected."
-msgstr "%(username)s nickli kullanıcının yazarlık talebi kabul reddedildi."
+msgstr "%(username)s nickli kullanıcının yazarlık talebi reddedildi."
 
 #: .\admin\views\novices.py:122
 #, python-format
@@ -253,7 +253,7 @@ msgid ""
 "admitted to novice list again."
 msgstr ""
 "sayın %(username)s, yazarlık başvurunuz reddedildi ve tüm entryleriniz "
-"silindi. eğer 10 entry doldurursanız tekrar çaylak onay listesine "
+"silindi. eğer 10 entry doldurursanız tekrar aday onay listesine "
 "alınacaksınız."
 
 #: .\admin\views\novices.py:127
@@ -283,7 +283,7 @@ msgstr "Başlık taşıma"
 msgid "%(count)d entry was transferred"
 msgid_plural "%(count)d entries were transferred"
 msgstr[0] "%(count)d tane entry güncellendi."
-msgstr[1] "%(count)d tane entry güncellendi."
+msgstr[1] "%(count)d tane girdi güncellendi."
 
 #: .\admin\views\topic.py:77
 msgid "Couldn't find the target topic."
@@ -314,11 +314,11 @@ msgstr "gündem"
 
 #: .\apps.py:54
 msgid "whats happening?"
-msgstr "neler olup bitiyor"
+msgstr "neler oluyor hayatta?"
 
 #: .\apps.py:55 .\templates\dictionary\base.html:281
 msgid "uncategorized"
-msgstr "başıboşlar"
+msgstr "serkeş başlıklar"
 
 #: .\apps.py:55 .\templates\dictionary\base.html:281
 msgid "topics with no channels"
@@ -332,12 +332,12 @@ msgstr "takip"
 
 #: .\apps.py:58
 msgid "what are users i follow up to?"
-msgstr "takip ettiğim yazarlar ne yapmış?"
+msgstr "takip ettiğim yazarlar nicedir?"
 
 #: .\apps.py:59 .\models\entry.py:31
 #: .\templates\dictionary\user\profile.html:109 .\views\detail.py:102
 msgid "entries"
-msgstr "entry'ler"
+msgstr "girdi'ler"
 
 #: .\apps.py:59 .\templates\dictionary\user\profile.html:110
 #: .\views\detail.py:103
@@ -351,7 +351,7 @@ msgstr "ukteler"
 
 #: .\apps.py:63
 msgid "the topics that some authors want populated"
-msgstr "diğer yazarların entry girilmesini istediği başlıklar"
+msgstr "diğer yazarların doldurulmasını istediği başlıklar"
 
 #: .\apps.py:64
 msgid "all"
@@ -367,7 +367,7 @@ msgstr "tarihte bugün"
 
 #: .\apps.py:66
 msgid "what has been said around this time in the past years?"
-msgstr "geçen yıllarda bu zamanlar ne denmiş?"
+msgstr "geçen yıllarda bu zamanlar neler olmuş?"
 
 #: .\apps.py:67 .\templates\dictionary\base.html:191
 msgid "drafts"
@@ -375,7 +375,7 @@ msgstr "kenar"
 
 #: .\apps.py:67
 msgid "the entries that i've yet to publish"
-msgstr "kenara attığım entry'ler"
+msgstr "kenara attığım girdi'ler"
 
 #: .\apps.py:68 .\templates\dictionary\base.html:203
 #: .\templates\dictionary\list\entry_list.html:37
@@ -390,11 +390,11 @@ msgstr "benden sonra neler girilmiş?"
 #: .\templates\dictionary\list\entry_list.html:35
 #: .\templatetags\functions.py:78
 msgid "novices"
-msgstr "çaylaklar"
+msgstr "adaylar"
 
 #: .\apps.py:69
 msgid "the entries of novice users"
-msgstr "çömezlerin girdikleri"
+msgstr "adayların girdikleri"
 
 #: .\apps.py:71
 msgid "top"
@@ -402,7 +402,7 @@ msgstr "en'ler"
 
 #: .\apps.py:72
 msgid "most liked entries"
-msgstr "en beğenilen entry'ler"
+msgstr "en beğenilen girdi'ler"
 
 #: .\apps.py:73
 msgid "yesterday"
@@ -419,7 +419,7 @@ msgstr "arama"
 
 #: .\apps.py:75 .\templates\dictionary\base.html:215
 msgid "advanced search"
-msgstr "hayvan ara"
+msgstr "detaylı ara"
 
 #: .\apps.py:77 .\apps.py:78
 msgid "user statistics"
@@ -428,7 +428,7 @@ msgstr "kullanıcı istatistiği"
 #: .\apps.py:81
 #, python-format
 msgid "@%(username)s - entries"
-msgstr "@%(username)s - entry'leri"
+msgstr "@%(username)s - girdi'leri"
 
 #: .\apps.py:82
 #, python-format
@@ -453,12 +453,12 @@ msgstr "@%(username)s - en beğenilenleri"
 #: .\apps.py:86
 #, python-format
 msgid "@%(username)s - attracting entries of this week"
-msgstr "@%(username)s - bu hafta dikkat çekenleri"
+msgstr "@%(username)s - bu haftanın dikkate değer girdileri"
 
 #: .\apps.py:87
 #, python-format
 msgid "@%(username)s - beloved entries"
-msgstr "@%(username)s - el emeği göz nuru"
+msgstr "@%(username)s - ciddi girdileri"
 
 #: .\apps.py:88
 #, python-format
@@ -475,127 +475,127 @@ msgstr "interaktif soru cevap temalı başlıklar"
 
 #: .\apps.py:275
 msgid "chaotic neutral"
-msgstr "kaotik nötral"
+msgstr "hevesli"
 
 #: .\apps.py:276
 msgid "chronic backup"
-msgstr "müzmin yedek"
+msgstr "kıdemli hevesli"
 
 #: .\apps.py:277
 msgid "padawan"
-msgstr "padawan"
+msgstr "astalebe"
 
 #: .\apps.py:278
 msgid "lunatic"
-msgstr "çılgın"
+msgstr "talebe"
 
 #: .\apps.py:279
 msgid "fragile anarchist"
-msgstr "kofti anarşist"
+msgstr "üstalebe"
 
 #: .\apps.py:280
 msgid "anarchist"
-msgstr "anarşist"
+msgstr "bundanolur"
 
 #: .\apps.py:281
 msgid "turbulent kicker"
-msgstr "hırçın golcü"
+msgstr "astemaşacı"
 
 #: .\apps.py:282
 msgid "anatolian boy"
-msgstr "anadolu çocuğu"
+msgstr "temaşacı"
 
 #: .\apps.py:283
 msgid "battal gazi"
-msgstr "battal gazi"
+msgstr "üstemaşacı"
 
 #: .\apps.py:284
 msgid "thorny"
-msgstr "çetrefilli"
+msgstr "canım"
 
 #: .\apps.py:285
 msgid "hippy"
-msgstr "hippi"
+msgstr "erbap"
 
 #: .\apps.py:286
 msgid "lad"
-msgstr "delikanlı"
+msgstr "yarbap"
 
 #: .\apps.py:287
 msgid "staid"
-msgstr "ağır abi"
+msgstr "albap"
 
 #: .\apps.py:288
 msgid "rowdy"
-msgstr "bıçkın"
+msgstr "ehil"
 
 #: .\apps.py:289
 msgid "richard the blazeheart "
-msgstr "mangal yürekli rişar"
+msgstr "tuğehil"
 
 #: .\apps.py:290
 msgid "compliant yet sympathetic"
-msgstr "mülayim ama sempatik"
+msgstr "tümehil"
 
 #: .\apps.py:291
 msgid "right minded"
-msgstr "aklı selim"
+msgstr "korehil"
 
 #: .\apps.py:292
 msgid "presentable"
-msgstr "prezentabl"
+msgstr "orehil"
 
 #: .\apps.py:293
 msgid "sugar"
-msgstr "şeker abi"
+msgstr "fikir insanı"
 
 #: .\apps.py:294
 msgid "honeypot"
-msgstr "bal küpü"
+msgstr "büyük fikirlerin insanı"
 
 #: .\apps.py:295
 msgid "yummier honey"
-msgstr "baldan tatlı"
+msgstr "delikanlı"
 
 #: .\apps.py:296
 msgid "luscious"
-msgstr "leziz"
+msgstr "centurion"
 
 #: .\apps.py:297
 msgid "addicted"
-msgstr "entry uğruna ruhunu satmış"
+msgstr "principe"
 
 #: .\apps.py:298
 msgid "switheet"
-msgstr "şekerpare"
+msgstr "triari"
 
 #: .\apps.py:299
 msgid "damascus apricot"
-msgstr "şamda kayısı"
+msgstr "zanaatkar"
 
 #: .\apps.py:300
 msgid "household"
-msgstr "her eve lazım"
+msgstr "bizim çocuk"
 
 #: .\apps.py:301
 msgid "exuberant"
-msgstr "tadına doyum olmaz"
+msgstr "mürşid"
 
 #: .\apps.py:302
 msgid "energizer bunny"
-msgstr "energizer tavşanı"
+msgstr "üstad"
 
 #: .\apps.py:303
 msgid "courteous"
-msgstr "gençlerin sevgilisi"
+msgstr "kalemşör"
 
 #: .\apps.py:304
 msgid "inhuman"
-msgstr "fevkalbeşer"
+msgstr "canavar"
 
 #: .\apps.py:305
 msgid "rating beast"
-msgstr "rating canavarı"
+msgstr "ahbap"
 
 #: .\apps.py:327
 msgid "imbecile"
@@ -673,11 +673,11 @@ msgstr "e-postalar uyuşmadı"
 
 #: .\forms\auth.py:70
 msgid "this e-mail is already in use."
-msgstr "bu e-posta kullanımda"
+msgstr "bu e-posta kullanımdadır"
 
 #: .\forms\edit.py:14
 msgid "entries per page"
-msgstr "sayfa başına entry"
+msgstr "sayfa başına girdi"
 
 #: .\forms\edit.py:15
 msgid "topics per page"
@@ -693,7 +693,7 @@ msgstr "okundu bilgileri gösterilsin"
 
 #: .\forms\edit.py:18
 msgid "allow uncategorized topics in today"
-msgstr "bugün'de başıboş başlıklar da gözüksün"
+msgstr "bugün'de serkeş başlıklar da gözüksün"
 
 #: .\forms\edit.py:19
 msgid "include site announcements in my activity"
@@ -701,7 +701,7 @@ msgstr "olay'da sözlük duyuruları bulunsun"
 
 #: .\forms\edit.py:39 .\utils\validators.py:27
 msgid "my dear, just write your entry, how hard could it be?"
-msgstr "bebeğim, alt tarafı bir entry gireceksin, ne kadar zor olabilir ki?"
+msgstr "bebeğim, alt tarafı bir girdi oluşturacaksın, ne kadar zor olabilir ki?"
 
 #: .\forms\edit.py:47 .\templates\dictionary\user\profile.html:33
 msgid "message"
@@ -709,11 +709,11 @@ msgstr "mesaj gönder"
 
 #: .\forms\edit.py:49
 msgid "can't really understand you"
-msgstr "ne diyorsun anlaşılmıyor"
+msgstr "ne dediğin anlaşılmıyor"
 
 #: .\forms\edit.py:55
 msgid "that message is just too short"
-msgstr "bu mesaj çok kısa be koçum"
+msgstr "bu mesaj çok kısa, minimalist seni"
 
 #: .\forms\edit.py:62
 msgid "to who"
@@ -794,7 +794,7 @@ msgstr "HTML açık"
 msgid ""
 "Check this to only use HTML, otherwise you can use entry formatting options."
 msgstr ""
-"Sadece HTML kullanmak için bunu seçin aksi halde entry biçimlendirme "
+"Sadece HTML kullanmak için bunu seçin aksi halde girdi biçimlendirme "
 "seçenekleri kullanılabilir."
 
 #: .\models\announcements.py:33
@@ -831,7 +831,7 @@ msgid ""
 " numbers and spaces."
 msgstr ""
 "boşluk dışında türkçe ve özel karakter içermeyen alfabe harflerinden oluşan "
-"bir nick münasiptir."
+"bir nick uygundur."
 
 #: .\models\author.py:66
 msgid "male"
@@ -851,11 +851,11 @@ msgstr "boşver"
 
 #: .\models\author.py:72
 msgid "in novice list"
-msgstr "çaylak listesinde"
+msgstr "aday listesinde"
 
 #: .\models\author.py:73
 msgid "waiting for first ten entries"
-msgstr "entry girmesi bekleniyor"
+msgstr "10 tane girdi bekleniyor"
 
 #: .\models\author.py:74
 msgid "authorship approved"
@@ -867,7 +867,7 @@ msgstr "kimse"
 
 #: .\models\author.py:78
 msgid "authors and novices"
-msgstr "yazarlar ve çaylaklar"
+msgstr "yazarlar ve adaylar"
 
 #: .\models\author.py:79 .\models\author.py:198
 msgid "authors"
@@ -895,7 +895,7 @@ msgstr ""
 
 #: .\models\author.py:110
 msgid "this nickname is too tiny"
-msgstr "bu nick çok minnoş"
+msgstr "bu nick çok kısa "
 
 #: .\models\author.py:112
 msgid "this nickname is already taken"
@@ -915,7 +915,7 @@ msgstr "Başvuru tarihi"
 
 #: .\models\author.py:131
 msgid "Last activity as novice"
-msgstr "Çaylak olarak son etkinlik"
+msgstr "Aday olarak son etkinlik"
 
 #: .\models\author.py:134
 msgid "Queue priority"
@@ -926,7 +926,7 @@ msgid ""
 "Novices with high priority are more likely to appear on the top of the "
 "novice list."
 msgstr ""
-"Yüksek sıra önceliğine sahip çaylakların çaylak listesinin üstüne çıkmaları "
+"Yüksek sıra önceliğine sahip adayların aday listesinin üstüne çıkmaları "
 "daha olasıdır."
 
 #: .\models\author.py:139
@@ -959,7 +959,7 @@ msgstr "Rozetler"
 
 #: .\models\author.py:191
 msgid "Can access to the novice list"
-msgstr "Çaylak listesine erişebilir"
+msgstr "Aday listesine erişebilir"
 
 #: .\models\author.py:192
 msgid "Can suspend users"
@@ -971,7 +971,7 @@ msgstr "Önbelleği temizleyebilir"
 
 #: .\models\author.py:194
 msgid "Can comment on entries"
-msgstr "Entry'lere yorum yapabilir"
+msgstr "Girdi'lere yorum yapabilir"
 
 #: .\models\author.py:195
 msgid "Can suggest categories for topics"
@@ -1004,20 +1004,20 @@ msgstr ""
 #: .\templates\dictionary\list\entry_list.html:281 .\views\edit.py:139
 #: .\views\images.py:33
 msgid "you lack the required permissions."
-msgstr "gereken yetkilere sahip değilsiniz."
+msgstr "gereken yetkilere sahip değilsiniz. başka şeyler yapın."
 
 #: .\models\author.py:324
 #, python-format
 msgid "you are sending entries too frequently. try again in a second."
 msgid_plural ""
 "you are sending entries too frequently. try again in %(remaining)d seconds."
-msgstr[0] "çok hızlı entry gönderiyorsunuz. şimdi yeniden deneyin."
+msgstr[0] "çok hızlı girdi gönderiyorsunuz. şimdi yeniden deneyin."
 msgstr[1] ""
-"çok hızlı entry gönderiyorsunuz. %(remaining)d saniye içinde tekrar deneyin."
+"çok hızlı girdi gönderiyorsunuz. %(remaining)d saniye içinde tekrar deneyin."
 
 #: .\models\author.py:522
 msgid "delete account completely"
-msgstr "hesabı komple sil"
+msgstr "hesabı komple sil, bırak buraları"
 
 #: .\models\author.py:523
 msgid "delete account with legacy"
@@ -1154,7 +1154,7 @@ msgstr "Taslak durumu"
 
 #: .\models\entry.py:30
 msgid "entry"
-msgstr "entry"
+msgstr "girdi"
 
 #: .\models\entry.py:55
 msgid ""
@@ -1162,9 +1162,9 @@ msgid ""
 "list. you can see your queue number in your profile page. if your entry "
 "count drops below 10, you will be kicked from the list."
 msgstr ""
-"10 adet entry'nizi doldurduğunuz için sizi çaylak listesine aldık. "
-"profilinizden sıranızı görebilirsiniz. entry sayınız 10'un altına düştüğü "
-"takdirde çaylak listesinden şutlanacaksınız."
+"10 adet girdi doldurduğunuz için sizi aday listesine aldık. "
+"profilinizden sıranızı görebilirsiniz. girdi sayınız 10'un altına düştüğü "
+"takdirde aday listesinden çıkarılacaksınız."
 
 #: .\models\entry.py:107
 msgid "comment"
@@ -1271,13 +1271,13 @@ msgstr ""
 
 #: .\models\topic.py:36
 msgid "First user to write an entry"
-msgstr "İlk entry giren kullanıcı"
+msgstr "İlk girdi oluşturan kullanıcı"
 
 #: .\models\topic.py:37
 msgid ""
 "The author or novice who entered the first entry for this topic publicly."
 msgstr ""
-"Bu başlığa ilk kez halka açık bir şekilde entry giren yazar veya çaylak."
+"Bu başlıkta ilk kez halka açık bir şekilde girdi oluşturan yazar veya aday."
 
 #: .\models\topic.py:40
 msgid "Channels"
@@ -1324,7 +1324,7 @@ msgid ""
 "Check this if you want to hinder authors and novices from entering new "
 "entries to this topic."
 msgstr ""
-"Yazar ve çaylakların bu başlığa entry girmesini engellemek istiyorsanız "
+"Yazar ve adayların bu başlığa girdi oluşturmasını engellemek istiyorsanız "
 "işaretleyin."
 
 #: .\models\topic.py:70
@@ -1349,7 +1349,7 @@ msgid ""
 "topic needs to have at least one entry."
 msgstr ""
 "Bu başlığın gündemde en üstte görünmesini istiyorsanız "
-"işaretleyin.<br>Başlığa en az 1 entry girilmiş olmalı."
+"işaretleyin.<br>Başlıkta en az 1 girdi olmalı."
 
 #: .\models\topic.py:88
 msgid "Ask me anything"
@@ -1360,12 +1360,12 @@ msgid ""
 "If checked, comments will be visible in this topic. Authorized users will be"
 " able to comment on entries."
 msgstr ""
-"Bu başlığa ait entry'lere ait yorumlar görünür hale gelecek. Yetkili "
-"kullanıcılar entry'lere cevap yazabilecekler."
+"Bu başlığa ait girdi'lere ait yorumlar görünür hale gelecek. Yetkili "
+"kullanıcılar girdi'lere cevap yazabilecekler."
 
 #: .\models\topic.py:97
 msgid "<i>Might not always correspond to first entry.</i>"
-msgstr "<i>Her zaman ilk entry ile örtüşmeyebilir.</i>"
+msgstr "<i>Her zaman ilk girdi ile örtüşmeyebilir.</i>"
 
 #: .\models\topic.py:104
 msgid "Can move topics"
@@ -1385,14 +1385,14 @@ msgid ""
 "`%(title)s`, the topic you wished for, had an entry entered by "
 "`@%(username)s`: (see: #%(entry)d)"
 msgstr ""
-"ukte verdiğiniz `%(title)s` başlığına `@%(username)s` tarafından entry "
-"girildi: (bkz: #%(entry)d)"
+"ukte verdiğiniz `%(title)s` başlığına `@%(username)s` tarafından girdi "
+"oluşturuldu: (bkz: #%(entry)d)"
 
 #: .\models\topic.py:148
 #, python-format
 msgid ""
 "`%(title)s`, the topic you wished for, is now populated with some entries."
-msgstr "ukte verdiğiniz `%(title)s` başlığına entry geldi."
+msgstr "ukte verdiğiniz `%(title)s` başlığında girdi oluşturuldu."
 
 #: .\models\topic.py:180
 msgid "Hint"
@@ -1419,7 +1419,7 @@ msgstr ""
 
 #: .\templates\404.html:18
 msgid "entry not found"
-msgstr "entry bulunamadı"
+msgstr "girdi bulunamadı"
 
 #: .\templates\404.html:20
 #, python-format
@@ -1428,7 +1428,7 @@ msgid ""
 " have been deleted and could be lurking in the limbo now, who knows? "
 "%(navigation_message)s"
 msgstr ""
-"<strong>(#%(entry_id)s)</strong> kimlikli entry bulunamadı. belki de "
+"<strong>(#%(entry_id)s)</strong> kimlikli girdi bulunamadı. belki de "
 "silinmiştir ve şu an arafta dolaşıyordur, kim bilir? %(navigation_message)s"
 
 #: .\templates\404.html:29
@@ -1472,7 +1472,7 @@ msgstr "Şu yazarları askıya almayı seçtiniz:"
 
 #: .\templates\admin\actions\suspend_user.html:26
 msgid "last entry date:"
-msgstr "son entry:"
+msgstr "son girdi:"
 
 #: .\templates\admin\actions\suspend_user.html:33
 msgid "Time interval for suspension:"
@@ -1504,7 +1504,7 @@ msgstr "Kullanıcılara gönderilecek bilgi mesajı:"
 
 #: .\templates\admin\actions\suspend_user.html:49
 msgid "(entry formatting options are available)"
-msgstr "(entry biçimlendirme seçenekleri kullanılabilir)"
+msgstr "(girdi biçimlendirme seçenekleri kullanılabilir)"
 
 #: .\templates\admin\actions\suspend_user.html:52
 msgid "Suspend"
@@ -1520,7 +1520,7 @@ msgstr "Şu başlıkları taşımayı seçtiniz:"
 
 #: .\templates\admin\actions\topic_move.html:25
 msgid "entry count:"
-msgstr "entry sayısı:"
+msgstr "girdi sayısı:"
 
 #: .\templates\admin\actions\topic_move.html:34
 msgid "Target topic:"
@@ -1532,7 +1532,7 @@ msgstr "Hedef başlığın bire bir ismini girin"
 
 #: .\templates\admin\actions\topic_move.html:39
 msgid "Give a date interval for entries (optional):"
-msgstr "Entry'ler için tarih aralığı belirt (opsiyonel):"
+msgstr "Girdi'ler için tarih aralığı belirtin (opsiyonel):"
 
 #: .\templates\admin\actions\topic_move.html:41
 #: .\templates\dictionary\includes\forms\extended_search.html:28
@@ -1575,11 +1575,11 @@ msgstr "Emin misiniz?"
 
 #: .\templates\admin\actions\unsuspend_user.html:34
 msgid "Yes, I'm sure"
-msgstr ""
+msgstr "Eminim"
 
 #: .\templates\admin\actions\unsuspend_user.html:35
 msgid "No, take me back"
-msgstr ""
+msgstr "Değilim"
 
 #: .\templates\admin\app_list.html:8
 #, python-format
@@ -1620,7 +1620,7 @@ msgstr "Yazarlık başvurusunu kabul et"
 
 #: .\templates\admin\novice_lookup.html:31
 msgid "Reject authorship and purge all entries"
-msgstr "Yazarlık başvurusunu reddet ve tüm entrylerini sil"
+msgstr "Yazarlık başvurusunu reddet ve tüm girdilerini sil"
 
 #: .\templates\admin\novice_lookup.html:34
 msgid "Apply and go back"
@@ -1640,7 +1640,7 @@ msgstr "Kayıt olma tarihi"
 
 #: .\templates\admin\novices.html:41
 msgid "current number of users in novice list:"
-msgstr "çaylak listesindeki mevcut kullanıcı sayısı:"
+msgstr "aday listesindeki mevcut kullanıcı sayısı:"
 
 #: .\templates\admin\sites\clear_cache.html:16
 msgid ""
@@ -1698,7 +1698,7 @@ msgstr "Sözlük ana sayfası"
 
 #: .\templates\dictionary\base.html:42
 msgid "topic, #entry or @author"
-msgstr "başlık, #entry ya da @yazar"
+msgstr "başlık, #girdi ya da @yazar"
 
 #: .\templates\dictionary\base.html:42
 msgid "Search term"
@@ -1812,7 +1812,7 @@ msgstr "iletişim"
 #: .\templates\dictionary\edit\entry_create.html:11
 #| msgid "create a new backup file"
 msgid "create new entry"
-msgstr "yeni entry oluştur"
+msgstr "yeni girdi oluştur"
 
 #: .\templates\dictionary\conversation\conversation.html:4
 #, python-format
@@ -1992,7 +1992,7 @@ msgstr ""
 #: .\templates\dictionary\edit\comment_form.html:33
 #, python-format
 msgid "comment on this entry written in %(title)s..."
-msgstr "%(title)s başlığına yapılan bu entry'i yorumlayın..."
+msgstr "%(title)s başlığına yapılan bu girdiyi yorumlayın..."
 
 #: .\templates\dictionary\edit\comment_form.html:34
 msgid "Comment content area"
@@ -2011,7 +2011,7 @@ msgstr "düşüncelerinizi ifade edin..."
 #: .\templates\dictionary\edit\entry_update.html:32
 #: .\templates\dictionary\list\entry_list.html:275
 msgid "Entry content area"
-msgstr "Entry içerik alanı"
+msgstr "Girdi içerik alanı"
 
 #: .\templates\dictionary\edit\entry_create.html:19
 #, python-format
@@ -2023,7 +2023,7 @@ msgid ""
 "are awaiting to be published:"
 msgstr ""
 "henüz <a %(drafts_attr)s href=\"%(drafts_url)s\">yayımlanmayı bekleyen</a> "
-"körpe entry'leriniz var:"
+"körpe girdileriniz var:"
 
 #: .\templates\dictionary\edit\entry_create.html:42
 #| msgid "Title"
@@ -2091,7 +2091,7 @@ msgstr "kişinin bugün'e giren başlıklarını göremeyeceksiniz"
 
 #: .\templates\dictionary\includes\block_user_modal.html:19
 msgid "you won't be able to see the entries of this user"
-msgstr "kişinin entry'lerini göremeyeceksiniz"
+msgstr "kişinin girdilerini göremeyeceksiniz"
 
 #: .\templates\dictionary\includes\block_user_modal.html:24
 #: .\templates\dictionary\includes\editor_buttons.html:31
@@ -2113,7 +2113,7 @@ msgstr "(bkz: hede)"
 
 #: .\templates\dictionary\includes\editor_buttons.html:6
 msgid "link to entry, author or topic"
-msgstr "başlık, entry ya da yazara link"
+msgstr "başlık, girdi ya da yazara link"
 
 #: .\templates\dictionary\includes\editor_buttons.html:6
 msgid "thingy"
@@ -2158,7 +2158,7 @@ msgstr "anonim"
 #: .\templates\dictionary\includes\entry.html:17
 #: .\templates\dictionary\includes\entry.html:94
 msgid "entry actions"
-msgstr "entry aksiyonları"
+msgstr "girdi aksiyonları"
 
 #: .\templates\dictionary\includes\entry.html:41
 msgid "share to facebook"
@@ -2210,7 +2210,7 @@ msgstr "güzelinden olsun"
 
 #: .\templates\dictionary\includes\forms\extended_search.html:21
 msgid "only the topics which i have favorite entries in"
-msgstr "sadece entry favorilediğim başlıklarda ara"
+msgstr "sadece girdi favorilediğim başlıklarda ara"
 
 #: .\templates\dictionary\includes\forms\extended_search.html:38
 msgid "ordering"
@@ -2329,7 +2329,7 @@ msgstr "mesajınız:"
 
 #: .\templates\dictionary\index.html:19
 msgid "no entries found suitable for display 🤷"
-msgstr "gösterime uygun entry yok 🤷"
+msgstr "gösterime uygun girdi yok 🤷"
 
 #: .\templates\dictionary\index.html:23
 msgid ""
@@ -2338,10 +2338,10 @@ msgid ""
 "<u>written by authors</u> is less than 15, despite the count of all time "
 "written entries being more than 15×2, the home page will not respond."
 msgstr ""
-"<b>random records:</b> ana sayfa'da entry'lerin gözükmesi için varsayılan "
-"ayarlarda tüm zamanlarda en az 15×2 entry girilmiş olmalı. tüm zamanlarda "
-"15×2 entry girilmesine rağmen <u>yazarlar tarafından yayımlanmış</u> toplam "
-"entry sayısı 15'ten az ise ana sayfa yanıt vermeyecektir."
+"<b>random records:</b> ana sayfa'da girdi'lerin gözükmesi için varsayılan "
+"ayarlarda tüm zamanlarda en az 15×2 girdi girilmiş olmalı. tüm zamanlarda "
+"15×2 girdi oluşturulmasına rağmen <u>yazarlar tarafından yayımlanmış</u> toplam "
+"girdi sayısı 15'ten az ise ana sayfa yanıt vermeyecektir."
 
 #: .\templates\dictionary\list\activity_list.html:4
 #: .\templates\dictionary\list\activity_list.html:7
@@ -2443,14 +2443,14 @@ msgstr "takip etme,takip et"
 
 #: .\templates\dictionary\list\entry_list.html:139
 msgid "Skip to entry content area"
-msgstr "Entry içerik alanına geç"
+msgstr "Girdi içerik alanına geç"
 
 #: .\templates\dictionary\list\entry_list.html:156
 #, python-format
 msgid "%(previous_count)s more entry"
 msgid_plural "%(previous_count)s more entries"
 msgstr[0] "%(previous_count)s entry daha"
-msgstr[1] "%(previous_count)s entry daha"
+msgstr[1] "%(previous_count)s girdi daha"
 
 #: .\templates\dictionary\list\entry_list.html:157
 #: .\templates\dictionary\list\entry_list.html:202
@@ -2459,29 +2459,29 @@ msgstr "tümünü göster"
 
 #: .\templates\dictionary\list\entry_list.html:181
 msgid "there has been no entries written by novices today."
-msgstr "bu başlığa bugün pek çaylak entry'si girilmemiş."
+msgstr "bu başlığa bugün pek aday girdi'si girilmemiş."
 
 #: .\templates\dictionary\list\entry_list.html:183
 msgid "this topic has no entries written by <u>authors</u>."
-msgstr "bu başlıkta hiç <u>yazar</u> entry'si yok."
+msgstr "bu başlıkta hiç <u>yazar</u> girdi'si yok."
 
 #: .\templates\dictionary\list\entry_list.html:185
 msgid "no suitable entries were found with the criteria you specified."
-msgstr "başlıkta aradığınız kritere uygun entry bulunamadı."
+msgstr "başlıkta aradığınız kritere uygun girdi bulunamadı."
 
 #: .\templates\dictionary\list\entry_list.html:190
 #, python-format
 msgid "show all (%(all_count)s entry)"
 msgid_plural "show all (%(all_count)s entries)"
-msgstr[0] "tümünü göster (%(all_count)s entry)"
-msgstr[1] "tümünü göster (%(all_count)s entry)"
+msgstr[0] "tümünü göster (%(all_count)s girdi)"
+msgstr[1] "tümünü göster (%(all_count)s girdi)"
 
 #: .\templates\dictionary\list\entry_list.html:201
 #, python-format
 msgid "%(subsequent_count)s more entry"
 msgid_plural "%(subsequent_count)s more entries"
-msgstr[0] "%(subsequent_count)s entry daha"
-msgstr[1] "%(subsequent_count)s entry daha"
+msgstr[0] "%(subsequent_count)s girdi daha"
+msgstr[1] "%(subsequent_count)s girdi daha"
 
 #: .\templates\dictionary\list\entry_list.html:209
 #: .\templates\dictionary\list\entry_list.html:222
@@ -2499,7 +2499,7 @@ msgid ""
 "entries belonging to <strong>%(title)s</strong>:</span>"
 msgstr ""
 "<span><strong>%(title)s</strong> başlığına ait <a %(drafts_attr)s "
-"href=\"%(drafts_url)s\">kenar</a>'da duran entry'leriniz var:</span>"
+"href=\"%(drafts_url)s\">kenar</a>'da duran girdi'leriniz var:</span>"
 
 #: .\templates\dictionary\list\entry_list.html:299
 msgid "belonging channels"
@@ -2811,7 +2811,7 @@ msgid ""
 "if have multiple statements, please consider them all in a report instead of"
 " sending them in seperate reports."
 msgstr ""
-"her bir entry, başlık veya kullanıcı için ayrı şikayet oluşturmak yerine "
+"her bir girdi, başlık veya kullanıcı için ayrı şikayet oluşturmak yerine "
 "toplu halde bir şikayet oluşturmanız, dert dinleyenlerin akıl sağlığı için "
 "iyi olacaktır."
 
@@ -2826,7 +2826,7 @@ msgid ""
 "entries and archived conversations. the output file will be in JSON format. "
 "you can only create one backup file per day."
 msgstr ""
-"yayınlanmış tüm entry'lerinizi ve arşivlenmiş mesajlarınızı içeren bir yedek"
+"yayınlanmış tüm girdi'lerinizi ve arşivlenmiş mesajlarınızı içeren bir yedek"
 " isteğinde bulunabilirsiniz. çıktı dosyası JSON formatında olacak. gün "
 "başına sadece bir tane yedek isteyebilirsiniz."
 
@@ -2951,7 +2951,7 @@ msgid ""
 "deleted."
 msgstr ""
 "iz bırakmadan temiz bir şekilde gitmek isteyenler için ideal. hesabınıza "
-"dair her şey: entry'leriniz ve mesajlarınız da dahil olmak üzere silinecek."
+"dair her şey: girdi'leriniz ve mesajlarınız da dahil olmak üzere silinecek."
 
 #: .\templates\dictionary\user\preferences\terminate.html:19
 msgid "b) delete account with legacy"
@@ -2962,7 +2962,7 @@ msgid ""
 "your account will be deleted completely. if you have authorship, your "
 "entries will be preserved anonymously for the next generations."
 msgstr ""
-"hesabınız komple silinecek. yazar iseniz, entry'leriniz gelecek nesiller "
+"hesabınız komple silinecek. yazar iseniz, girdi'leriniz gelecek nesiller "
 "tarafından okunması için anonim olarak tutulacak."
 
 #: .\templates\dictionary\user\preferences\terminate.html:29
@@ -2976,7 +2976,7 @@ msgid ""
 "entries will be visible. if you log in, your account will be reactivated."
 msgstr ""
 "hesabınızla duygusal bir bağ kurduysanız ideal. hesabınız donukken "
-"profilinize kimse ulaşamaz ve size mesaj gönderilemez. entry'leriniz "
+"profilinize kimse ulaşamaz ve size mesaj gönderilemez. girdi'leriniz "
 "görülebilir halde durur. hesabınıza giriş yaparsanız hesabınız tekrar aktive"
 " olur."
 
@@ -3004,7 +3004,7 @@ msgstr "kullanıcı"
 
 #: .\templates\dictionary\user\profile.html:16
 msgid "novice,author"
-msgstr "çaylak,yazar"
+msgstr "aday,yazar"
 
 #: .\templates\dictionary\user\profile.html:16
 #, python-format
@@ -3030,23 +3030,23 @@ msgstr ""
 
 #: .\templates\dictionary\user\profile.html:50
 msgid "total number of entries"
-msgstr "toplam entry sayısı"
+msgstr "toplam girdi sayısı"
 
 #: .\templates\dictionary\user\profile.html:51
 msgid "number of entries last month"
-msgstr "son 1 ayda girdiği entry sayısı"
+msgstr "son 1 ayda girilen girdi sayısı"
 
 #: .\templates\dictionary\user\profile.html:52
 msgid "number of entries last week"
-msgstr "son 1 haftada girdiği entry sayısı"
+msgstr "son 1 haftada girilen girdi sayısı"
 
 #: .\templates\dictionary\user\profile.html:53
 msgid "number of entries last 24 hours"
-msgstr "son 24 saatte girdiği entry sayısı"
+msgstr "son 24 saatte girilen girdi sayısı"
 
 #: .\templates\dictionary\user\profile.html:54
 msgid "latest entry when?"
-msgstr "son entry girdiği zaman"
+msgstr "son girdi zamanı"
 
 #: .\templates\dictionary\user\profile.html:54
 msgid "never"
@@ -3055,11 +3055,11 @@ msgstr "hiç"
 #: .\templates\dictionary\user\profile.html:57
 #, python-format
 msgid "you are the %(queue_ordinal)s person in the novice list."
-msgstr "çaylak onay listesinde %(queue_ordinal)s sıradasınız."
+msgstr "aday onay listesinde %(queue_ordinal)s sıradasınız."
 
 #: .\templates\dictionary\user\profile.html:62
 msgid "novice"
-msgstr "çaylak"
+msgstr "aday"
 
 #: .\templates\dictionary\user\profile.html:66
 #, python-format
@@ -3076,7 +3076,7 @@ msgstr "azimli"
 
 #: .\templates\dictionary\user\profile.html:71
 msgid "has at least 1000 entries"
-msgstr "en azından 1000 entry girmiş"
+msgstr "en azından 1000 girdi girmiş"
 
 #: .\templates\dictionary\user\profile.html:77
 msgid "assorter"
@@ -3169,7 +3169,7 @@ msgstr "b"
 
 #: .\templatetags\functions.py:76
 msgid "today's entries"
-msgstr "bugün girilen entry'ler"
+msgstr "bugünün girdi'leri"
 
 #: .\templatetags\functions.py:82
 msgid "entries written after me"
@@ -3187,7 +3187,7 @@ msgstr "tarihte bugün: %(year)s"
 
 #: .\templatetags\functions.py:87
 msgid "entries with replies"
-msgstr "yanıtlanmış entry'ler"
+msgstr "yanıtlanmış girdi'ler"
 
 #: .\templatetags\functions.py:95
 #, python-format
@@ -3340,7 +3340,7 @@ msgstr "kaydettik efendim"
 
 #: .\views\edit.py:89 .\views\edit.py:152
 msgid "the entry was successfully launched into stratosphere"
-msgstr "entry başarıyla stratosfere yollandı"
+msgstr "girdi başarıyla stratosfere yollandı"
 
 #: .\views\edit.py:180
 msgid "the comment was successfully launched into stratosphere"
@@ -3440,7 +3440,7 @@ msgid ""
 "about the entry (#%(referrer_entry)s), in the topic titled "
 "'%(referrer_topic)s'"
 msgstr ""
-"'%(referrer_topic)s' başlığındaki (#%(referrer_entry)s) numaralı entry "
+"'%(referrer_topic)s' başlığındaki (#%(referrer_entry)s) numaralı girdi "
 "hakkında"
 
 #: .\views\reporting.py:114

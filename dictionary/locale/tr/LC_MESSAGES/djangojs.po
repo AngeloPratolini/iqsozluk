@@ -38,7 +38,7 @@ msgstr "takip et"
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\entry.js:173
 #: .\static\dictionary\js\entry.js:256 .\static\dictionary\js\topic.js:95
 msgid "are you sure to delete?"
-msgstr "harbiden silinsin mi?"
+msgstr "gerçekten silinsin mi?"
 
 #: .\static\dictionary\js\conversation.js:61
 #: .\static\dictionary\js\dist\index.js:1
@@ -58,7 +58,7 @@ msgstr "silmek için bir sohbet seçmedin ki"
 #: .\static\dictionary\js\conversation.js:100
 #: .\static\dictionary\js\dist\index.js:1
 msgid "are you sure to archive all selected conversations?"
-msgstr "seçilen sohbetler harbiden arşivlensin mi?"
+msgstr "seçilen sohbetler arşivlensin mi?"
 
 #: .\static\dictionary\js\conversation.js:111
 #: .\static\dictionary\js\dist\index.js:1
@@ -68,7 +68,7 @@ msgstr "arşivlemek için bir sohbet seçmedin ki"
 #: .\static\dictionary\js\conversation.js:116
 #: .\static\dictionary\js\dist\index.js:1
 msgid "are you sure to archive?"
-msgstr "harbiden arşivlensin mi?"
+msgstr "arşivlensin mi?"
 
 #: .\static\dictionary\js\conversation.js:127
 #: .\static\dictionary\js\dist\index.js:1
@@ -96,7 +96,7 @@ msgstr "mesajınız görülmemiştir diye umuyoruz."
 #: .\static\dictionary\js\dialog.js:57 .\static\dictionary\js\dist\index.js:1
 #: .\static\dictionary\js\entry.js:326
 msgid "if only you could write down something"
-msgstr "çeşke bi şeyler yazsaydın"
+msgstr "keşke bi şeyler yazsaydınız"
 
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\image.js:6
 msgid "image could not be displayed. it might have been deleted."
@@ -176,7 +176,7 @@ msgstr "engeli kaldır"
 
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\user.js:26
 msgid "block this guy"
-msgstr "bu herifi engelle"
+msgstr "bu insanı engelle"
 
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\topic.js:21
 #: .\static\dictionary\js\user.js:33
@@ -195,8 +195,8 @@ msgstr "hiç yok aslında"
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\entry.js:67
 msgid "... %(count)s novice"
 msgid_plural "... %(count)s novices"
-msgstr[0] "... %(count)s çaylak"
-msgstr[1] "... %(count)s çaylak"
+msgstr[0] "... %(count)s aday"
+msgstr[1] "... %(count)s aday"
 
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\entry.js:193
 msgid "link copied to clipboard."
@@ -271,7 +271,7 @@ msgstr "biri bu başlığı doldursun"
 
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\topic.js:60
 msgid "nevermind"
-msgstr "boşver"
+msgstr "boş ver"
 
 #: .\static\dictionary\js\dist\index.js:1 .\static\dictionary\js\topic.js:87
 msgid "you just wished for this topic."
