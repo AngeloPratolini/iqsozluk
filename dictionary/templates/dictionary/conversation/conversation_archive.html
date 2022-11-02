@@ -13,11 +13,11 @@
 
     <div class="chat-quick-links d-flex justify-content-between align-items-center mb-1">
         <div class="svg-group">
-            <a href="{% url 'messages-archive' %}" class="mr-2" title="{% trans "enough lingering here" %}">
+            <a href="{% url 'messages-archive' %}" class="mr-2" title="yeterince oyalandık burada">
                 <svg fill="currentColor" width="24" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                     <use href="#arrow-left"></use>
                 </svg>
-                <span>{% trans "back to messages" %}</span>
+                <span>mesajlara dön</span>
             </a>
         </div>
 
@@ -26,7 +26,7 @@
                 <svg fill="currentColor" viewBox="0 0 16 16" width="16" height="16">
                     <use href="#trash"></use>
                 </svg>
-                <span class="ml-2">{% trans "delete" %}</span>
+                <span class="ml-2">sil</span>
             </a>
         </div>
     </div>
@@ -34,7 +34,7 @@
     <ul id="message_list" class="chat">
         {% with messages=object.to_json.messages %}
             {% if messages|length > 10 %}
-                <a id="message_history_show" role="button" tabindex="0" title="{% trans "make it rain" %}">{% trans "only the last 10 messages are shown. click here to show all messages." %}</a>
+                <a id="message_history_show" role="button" tabindex="0" title="yağdır">Son 10 mesaj gösteriliyor, hepsini görmek için tıkla</a>
             {% endif %}
 
             {% for message in messages %}
