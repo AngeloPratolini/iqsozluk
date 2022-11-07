@@ -36,7 +36,7 @@
 
                 <div class="d-flex align-items-center">
                     {% if updating %}
-                        <button name="delete" value="true" onclick="return confirm('{% trans "Are you sure?" %}');" type="submit" class="btn btn-sm">{% trans "delete" %}</button>
+                        <button name="delete" value="true" onclick="return confirm('Emin misiniz?');" type="submit" class="btn btn-sm">Sil</button>
                     {% endif %}
                     <button type="submit" class="btn btn-django ml-auto">{{ updating|yesno:_("update comment,comment") }}</button>
                 </div>

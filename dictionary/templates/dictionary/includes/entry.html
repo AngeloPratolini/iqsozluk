@@ -11,10 +11,10 @@
                 {% if not entry.author.is_private %}
                     <div><a class="username fs-16 fw-600" href="{{ entry.author.get_absolute_url }}">{{ entry.author.username }}</a></div>
                 {% else %}
-                    <span class="username"><i>{% trans "anonymous" %}</i></span>
+                    <span class="username"><i>anonim</i></span>
                 {% endif %}
 
-                <a role="button" title="{% trans "entry actions" %}" tabindex="0" class="action" data-toggle="dropdown" aria-haspopup="true">
+                <a role="button" title="girdi aksiyonları" tabindex="0" class="action" data-toggle="dropdown" aria-haspopup="true">
                     <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                         <use href="#more"></use>
                     </svg>
@@ -38,12 +38,12 @@
         <footer class="entry-footer">
             <div class="feedback">
                 <div class="social">
-                    <a role="button" tabindex="0" title="{% trans "share to facebook" %}" class="facebook">
+                    <a role="button" tabindex="0" title="facebook'ta paylaş" class="facebook">
                         <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <use href="#facebook"></use>
                         </svg>
                     </a>
-                    <a role="button" tabindex="0" title="{% trans "tweet this in twitter" %}" class="twitter">
+                    <a role="button" tabindex="0" title="twitter'da paylaş" class="twitter">
                         <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <use href="#twitter"></use>
                         </svg>
@@ -52,13 +52,13 @@
 
                 {% if user != entry.author %}
                     <div class="votes entry-vote">
-                        <a role="button" tabindex="0" title="{% trans "nice!" %}" class="vote upvote{{ entry.is_upvoted|yesno:" active," }}">
+                        <a role="button" tabindex="0" title="güzel!" class="vote upvote{{ entry.is_upvoted|yesno:" active," }}">
                             <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#up"></use>
                             </svg>
                         </a>
 
-                        <a role="button" tabindex="0" title="{% trans "awful" %}" class="vote downvote{{ entry.is_downvoted|yesno:" active," }}">
+                        <a role="button" tabindex="0" title="fena" class="vote downvote{{ entry.is_downvoted|yesno:" active," }}">
                             <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#down"></use>
                             </svg>
@@ -68,13 +68,13 @@
 
                 {% if user.is_authenticated %}
                     <div class="favorites">
-                        <a role="button" tabindex="0" {% if entry.is_favorited %}title="{% trans "remove from favorites" %}" class="favorite active" {% else %}title="{% trans "add to favorites"  %}" class="favorite"{% endif %}>
+                        <a role="button" tabindex="0" {% if entry.is_favorited %}title="favorilerden çıkar" class="favorite active" {% else %}title="favorilere ekle" class="favorite"{% endif %}>
                             <svg width="25" height="13" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#favorite"></use>
                             </svg>
                         </a>
                         {% with entry.favorited_by.count as fav_count %}
-                            <a role="button" class="fav-count" tabindex="{{ fav_count|yesno:"0,-1" }}" data-toggle="dropdown" aria-label="{% trans "Favorites" %}" aria-haspopup="true" aria-expanded="false" {% if not fav_count %}aria-hidden="true" {% endif %}>{% firstof fav_count %}</a>
+                            <a role="button" class="fav-count" tabindex="{{ fav_count|yesno:"0,-1" }}" data-toggle="dropdown" aria-label="Favoriler" aria-haspopup="true" aria-expanded="false" {% if not fav_count %}aria-hidden="true" {% endif %}>{% firstof fav_count %}</a>
                             <span class="dropdown-menu no-collapse favorites-list tinybar" data-orientation="bottom-start" data-loaded="false"></span>
                         {% endwith %}
                     </div>
@@ -88,10 +88,10 @@
                 {% if not entry.author.is_private %}
                     <a class="username" href="{{ entry.author.get_absolute_url }}">{{ entry.author.username }}</a>
                 {% else %}
-                    <span class="username"><i>{% trans "anonymous" %}</i></span>
+                    <span class="username"><i>anonim</i></span>
                 {% endif %}
 
-                <a role="button" tabindex="0" title="{% trans "entry actions" %}" class="action" data-toggle="dropdown" aria-haspopup="true">
+                <a role="button" tabindex="0" title="girdi aksiyonları" class="action" data-toggle="dropdown" aria-haspopup="true">
                     <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                         <use href="#more"></use>
                     </svg>
@@ -108,13 +108,13 @@
             {% for comment in comments %}
                 <div class="comment d-flex align-items-center" id="comment-{{ comment.pk }}">
                     <aside class="votes comment-vote d-flex flex-column align-items-center px-3" data-id="{{ comment.pk }}">
-                        <a class="vote upvote{{ comment.is_upvoted|yesno:" active," }}" role="button" tabindex="0" title="{% trans "nice!" %}">
+                        <a class="vote upvote{{ comment.is_upvoted|yesno:" active," }}" role="button" tabindex="0" title="güzel!">
                             <svg width="25" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#up"></use>
                             </svg>
                         </a>
                         <strong class="rating">{{ comment.rating }}</strong>
-                        <a class="vote downvote{{ comment.is_downvoted|yesno:" active," }}" role="button" tabindex="0" title="{% trans "awful" %}">
+                        <a class="vote downvote{{ comment.is_downvoted|yesno:" active," }}" role="button" tabindex="0" title="fena">
                             <svg width="25" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#down"></use>
                             </svg>
@@ -124,10 +124,10 @@
                         <p class="text-formatted">{{ comment.content|formatted|linebreaksbr }}</p>
                         <footer class="d-flex justify-content-between fs-90">
                             {% firstof comment.author.get_full_name|lower comment.author.username as name %}
-                            <span>{% blocktrans with name_url=comment.author.get_absolute_url %}replied by <a href="{{ name_url }}">{{ name }}</a>.{% endblocktrans %}</span>
+                            <span>{% blocktrans with name_url=comment.author.get_absolute_url %} <a href="{{ name_url }}">{{ name }}</a>.{% endblocktrans %} tarafından cevaplandı</span>
                             <div>
                                 {% if user == comment.author %}
-                                    <a class="mr-2" href="{% url 'comment_update' pk=comment.pk %}">{% trans "edit" %}</a>
+                                    <a class="mr-2" href="{% url 'comment_update' pk=comment.pk %}">düzenle</a>
                                 {% endif %}
                                 <a href="{{ comment.get_absolute_url }}">
                                     <time datetime="{{ comment.date_created|date:"c" }}">{{ comment.date_created|entrydate:comment.date_edited }}</time>

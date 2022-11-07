@@ -1,11 +1,11 @@
 {% load i18n %}
 {% url "confirm-email" token=token as confirm_url %}
 {% blocktrans trimmed with name=user.username %}
-    <h4>dear {{ name }}</h4>
-    <p>to confirm your e-mail, follow this link:</p>
-    <a href="{{ protocol }}://{{ domain }}{{ confirm_url }}">confirm e-mail</a>
-    <p>if you can't see or click the link, navigate to this link via the address bar:</p>
+    <h4>sevgili {{ name }}</h4>
+    <p>e-mail adresinizi doğrulamak için aşağıdaki linki izleyiniz</p>
+    <a href="{{ protocol }}://{{ domain }}{{ confirm_url }}">adresi doğrula</a>
+    <p>bağlantıyı göremiyor veya tıklayamıyorsanız aşağıdaki linki kullanabilirsiniz.</p>
     <p>{{ protocol }}://{{ domain }}{{ confirm_url }}</p>
-    <p>if you didn't request such thing, you don't need to worry about anything.</p>
-    <p>have a good day.</p>
+    <p>bu işlemi siz yapmadıysanız hiçbir şey olmamış gibi davranmanız önerilir.</p>
+    <p>güzel günler.</p>
 {% endblocktrans %}

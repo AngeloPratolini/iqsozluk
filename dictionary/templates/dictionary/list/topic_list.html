@@ -17,7 +17,7 @@
                 {% endif %}
 
             {% if slug == "popular" %}
-                <span role="button" tabindex="0" title="{% trans "channel exclusions" %}" style="display: inline-block; vertical-align: baseline;" class="exclusion-button">
+                <span role="button" tabindex="0" title="gündem filtresi" style="display: inline-block; vertical-align: baseline;" class="exclusion-button">
                     <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <use href="#cog"></use>
                     </svg>
@@ -40,14 +40,14 @@
             {% if refresh_count %}
                 <form method="post">
                     {% csrf_token %}
-                    <button class="refresh-button-mobile">{% trans "refresh" %} ({{ refresh_count }})</button>
+                    <button class="refresh-button-mobile">yenile ({{ refresh_count }})</button>
                 </form>
             {% endif %}
         {% endif %}
 
         {% if slug == "popular" %}
             <div class="exclusion-settings {% if not exclusions.active %}dj-hidden{% endif %}" id="exclusion-settings-mobile">
-                <small>{% trans "personalize popular topics:" %}</small>
+                <small>'popüler'i kişiselleştir</small>
                 <ul class="exclusion-choices">
                     {% for category in exclusions.available %}
                         <li><a role="button" tabindex="0" {% if category.slug in exclusions.active %}class="active"{% endif %} data-slug="{{ category.slug }}">#{{ category.name }}</a></li>
@@ -57,7 +57,7 @@
         {% endif %}
 
         {% if slug == "today-in-history" %}
-            <select class="mobile-topic-list form-control mb-2" id="mobile_year_changer" aria-label="{% trans "Year selector" %}">
+            <select class="mobile-topic-list form-control mb-2" id="mobile_year_changer" aria-label="Yılseçer">
                 {% for y in year_range %}
                     <option value="{{ y }}" {% if y == year %}selected{% endif %}>{{ y }}</option>
                 {% endfor %}
@@ -69,7 +69,7 @@
             {# render search form, if request.GET.ordering has value, it means there is a search #}
             <form method="get" action="{% url 'topic_list' slug='search' %}" class="search_mobile mb-3{% if request.GET.ordering %} collapse{% endif %}" id="search_form_extended_mobile">
                 {% include "dictionary/includes/forms/extended_search.html" with source="mobile" %}
-                <button type="submit" class="btn btn-django stretch">{% trans "search fabulously" %}</button>
+                <button type="submit" class="btn btn-django stretch">harikulade ara</button>
             </form>
         {% endif %}
 
@@ -82,7 +82,7 @@
                     </li>
                 {% endfor %}
             {% else %}
-                <small class="mt-2">{% trans "nothing here" %}</small>
+                <small class="mt-2">burada bir şey yok</small>
             {% endif %}
         </ul>
 

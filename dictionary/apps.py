@@ -14,7 +14,7 @@ class DictionaryConfig(AppConfig):
 
     # Settings
 
-    DOMAIN = "xyzsozluk.com"
+    DOMAIN = "iqsozluk.com"
     PROTOCOL = "http"
     FROM_EMAIL = "noreply@xyzsozluk.org"
 
@@ -50,32 +50,32 @@ class DictionaryConfig(AppConfig):
     #  <-----> START OF CATEGORY RELATED SETTINGS <----->  #
 
     NON_DB_CATEGORIES_META = {
-        "today": (_("today"), _("most recent entries")),
-        "popular": (_("popular"), _("whats happening?")),
-        "uncategorized": (_("uncategorized"), _("topics with no channels")),
+        "today": (_("bugün"), _("son girdi'ler")),
+        "popular": (_("popüler"), _("neler oluyor?")),
+        "uncategorized": (_("serkeş"), _("kategorisiz başlıklar")),
         "acquaintances": (
-            _("acquaintances"),
-            _("what are users i follow up to?"),
-            ({"entries": _("entries"), "favorites": _("favorites")}, "entries"),
+            _("tanıdıklar"),
+            _("takip ettiğim insanlar ne yapıyor"),
+            ({"entries": _("girdiler"), "favorites": _("favoriler")}, "entries"),
         ),
         "wishes": (
-            _("wishes"),
-            _("the topics that some authors want populated"),
-            ({"all": _("all"), "owned": _("owned")}, "all"),
+            _("ukte"),
+            _("doldurulması istenen başlıklar"),
+            ({"all": _("hepsi"), "owned": _("sahipli")}, "all"),
         ),
-        "today-in-history": (_("today in history"), _("what has been said around this time in the past years?")),
-        "drafts": (_("drafts"), _("the entries that i've yet to publish")),
-        "followups": (_("followups"), _("what other authors wrote down after me?")),
-        "novices": (_("novices"), _("the entries of novice users")),
-        "top": (
-            _("top"),
-            _("most liked entries"),
-            ({"yesterday": _("yesterday"), "week": _("last week")}, "yesterday"),
+        "today-in-history": (_("tarihte bugün"), _("geçen sene bugün ne olmuş?")),
+        "drafts": (_("kenardakiler"), _("henüz yayınlamadığım taslaklar")),
+        "followups": (_("takibimdekiler"), _("benden sonra neler dönmüş?")),
+        "novices": (_("adaylar"), _("adayların girdi'leri")),
+        "en iyi": (
+            _("en iyiler"),
+            _("en çok beğenilenler"),
+            ({"yesterday": _("dün"), "week": _("geçen hafta")}, "yesterday"),
         ),
-        "search": (_("search"), _("advanced search")),
+        "search": (_("ara"), _("gelişmiş ara")),
         "userstats": (
-            _("user statistics"),
-            _("user statistics"),
+            _("kullanıcı istatistikleri"),
+            _("kullanıcı istatistikleri"),
             (
                 {
                     "latest": _("@%(username)s - entries"),
@@ -204,7 +204,7 @@ class DictionaryConfig(AppConfig):
     You may also (better) use this for debugging purposes.
     """
 
-    YEAR_RANGE = (2020, 2019, 2018)
+    YEAR_RANGE = (2024, 2023, 2022)
     """Years available for today-in-history"""
 
     #  <-----> END OF CATEGORY RELATED SETTINGS <----->  #
@@ -219,7 +219,7 @@ class DictionaryConfig(AppConfig):
     to see which users are newbies.
     """
 
-    FIRST_GENERATION_DATE = "13.08.2019"
+    FIRST_GENERATION_DATE = "10.11.2022"
     """Set this to first user's registration date. (day should be first)"""
 
     GENERATION_GAP_DAYS = 180
@@ -324,10 +324,10 @@ class DictionaryConfig(AppConfig):
     other people's karma by voting.
     """
 
-    UNDERWHELMING_KARMA_EXPRESSION = _("imbecile")
+    UNDERWHELMING_KARMA_EXPRESSION = _("embesil")
     """Expression for too low karma points. (decided by KARMA_BOUNDARY_LOWER)"""
 
-    OVERWHELMING_KARMA_EXPRESSION = _("the champion")
+    OVERWHELMING_KARMA_EXPRESSION = _("şampiyon")
     """Expression for too high karma points. (decided by KARMA_BOUNDARY_UPPER)"""
 
     # Suggestions

@@ -18,9 +18,9 @@
     <section class="mt-3">
         <form method="get" action="{{ request.path }}">
             <div class="input-group">
-                <input name="search" type="text" class="form-control border-0 bg-light" placeholder="{% trans "search" %}" aria-label="{% trans "search" %}" value="{% firstof request.GET.search.strip %}">
+                <input name="search" type="text" class="form-control border-0 bg-light" placeholder="ara" aria-label="{% trans "search" %}" value="{% firstof request.GET.search.strip %}">
                 <div class="input-group-append">
-                    <button class="btn btn-django-link" type="submit">{% trans "go" %}</button>
+                    <button class="btn btn-django-link" type="submit">git</button>
                 </div>
             </div>
         </form>
@@ -32,21 +32,21 @@
                         {% for author in authors %}
                             <li class="list-group-item d-flex justify-content-between border-0" data-username="{{ author.username }}">
                                 <a href="{{ author.get_absolute_url }}">{{ author.username }}</a>
-                                <span class="follow-user-trigger"><a role="button" tabindex="0">{% trans "unfollow" %}</a></span>
+                                <span class="follow-user-trigger"><a role="button" tabindex="0">takibi bırak</a></span>
                             </li>
                         {% endfor %}
                     {% elif tab == "blocked" %}
                         {% for author in authors %}
                             <li class="list-group-item d-flex justify-content-between border-0">
                                 <a href="{{ author.get_absolute_url }}">{{ author.username }}</a>
-                                <a role="button" tabindex="0" class="block-user-trigger" data-username="{{ author.username }}">{% trans "remove block" %}</a>
+                                <a role="button" tabindex="0" class="block-user-trigger" data-username="{{ author.username }}">engeli kaldır</a>
                             </li>
                         {% endfor %}
                     {% endif %}
                 </ul>
                 {% include "dictionary/includes/paginaton.html" with paginator=page_obj index="yes" %}
             {% else %}
-                <div class="bg-light p-3 mt-3 rounded">{% trans "nothing here" %}</div>
+                <div class="bg-light p-3 mt-3 rounded">burada bir şey yok</div>
             {% endif %}
         {% endwith %}
     </section>

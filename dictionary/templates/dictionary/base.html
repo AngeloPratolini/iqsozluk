@@ -25,28 +25,28 @@
 <header class="page_header">
 
     <div class="container">
-        <div class="small-device-alert">{% trans "the device is too small!" %}</div>
+        <div class="small-device-alert">cihaz çok küçük</div>
 
         <div class="top-bar">
 
-            <button class="content-skipper d-print-none" data-href="#main">{% trans "Skip to main content" %}</button>
+            <button class="content-skipper d-print-none" data-href="#main">Ana içeriğe geç</button>
 
             {# <!--- logo --> #}
             <div class="logo">
-                <a aria-label="{% trans "Dictionary home page" %}" href="{% url 'home' %}"></a>
+                <a aria-label="Sözlük ana sayfası" href="{% url 'home' %}"></a>
             </div>
 
             {# Advanced search #}
             <form method="GET" class="header-search-form" action="{% url 'topic-search' %}" id="header_search_form">
                 <div class="input-group searchbox">
-                    <input name="q" type="text" placeholder="başlık, #girdi veya @yazar" class="searchbox-text form-control" id="header_search" form="header_search_form" aria-label="{% trans "Search term" %}">
+                    <input name="q" type="text" placeholder="başlık, #girdi veya @yazar" class="searchbox-text form-control" id="header_search" form="header_search_form" aria-label="arama terimi">
                     <div class="input-group-append">
 
                         <button type="button" class="btn dropbtn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">{% trans "Open advanced search menu" %}</span>
+                            <span class="sr-only">gelişmiş arama menüsünü aç</span>
                         </button>
 
-                        <button class="btn searchbtn" type="submit" title="{% trans "Search" %}">
+                        <button class="btn searchbtn" type="submit" title="Ara">
                             <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 16 16">
                                 <use href="#search"></use>
                             </svg>
@@ -56,9 +56,9 @@
                             <div class="px-3 py-2">
                                 {% include "dictionary/includes/forms/extended_search.html" with source="dropdown" %}
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-django stretch" id="perform_advanced_search">{% trans "search fabulously" %}</button>
+                                    <button type="button" class="btn btn-django stretch" id="perform_advanced_search">müthiş ara</button>
                                 </div>
-                                <a role="button" tabindex="0" class="dropdown-item text-center dropdown-close" id="close_search_dropdown">{% trans "nevermind" %}</a>
+                                <a role="button" tabindex="0" class="dropdown-item text-center dropdown-close" id="close_search_dropdown">boş ver</a>
                             </div>
                         </div>
                     </div>
@@ -72,33 +72,33 @@
             {% if user.is_authenticated %}
                 <nav id="user-navigation">
                     {% with sum=user.unread_topic_count.sum %}
-                        <a aria-label="{% trans "following topics" %}{% if sum > 0 %} ({{ sum }} {% trans "unread" %}){% endif %}" href="{% url 'activity' %}">
+                        <a aria-label="takip edilen başlıklar{% if sum > 0 %} ({{ sum }} okunmamış){% endif %}" href="{% url 'activity' %}">
                             {% if sum > 0 %}
                                 <div class="badge user-badge">{{ sum }}</div>
                             {% endif %}
                             <svg fill="currentColor" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#bell"></use>
                             </svg>
-                            <span>{% trans "activity" %}</span>
+                            <span>senato</span>
                         </a>
                     {% endwith %}
                     {% with count=user.unread_message_count %}
-                        <a href="{% url 'messages' %}" aria-label="{% trans "messages" %}{% if count > 0 %} ({{ count }} {% trans "unread" %}){% endif %}">
+                        <a href="{% url 'messages' %}" aria-label="mesajlar{% if count > 0 %} ({{ count }} okunmamış){% endif %}">
                             {% if count > 0 %}
                                 <div class="badge user-badge">{{ count }}</div>
                             {% endif %}
                             <svg style="transform: scaleX(-1);" fill="currentColor" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#chat"></use>
                             </svg>
-                            <span>{% trans "messages" %}</span>
+                            <span>mesajlar</span>
                         </a>
                     {% endwith %}
-                    <a data-toggle="dropdown" role="button" tabindex="0" aria-haspopup="true" aria-label="{% trans "Account Menu" %}" id="user-dropdown">
+                    <a data-toggle="dropdown" role="button" tabindex="0" aria-haspopup="true" aria-label="Hesap menüsü" id="user-dropdown">
                         <svg fill="currentColor" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                             <use href="#person"></use>
                         </svg>
                         <span>
-                            <span>{% trans "me" %}</span>
+                            <span>ben</span>
                             <svg fill="currentColor" width="18" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#caret-down"></use>
                             </svg>
@@ -110,50 +110,50 @@
                             <svg fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#person-circle"></use>
                             </svg>
-                            {% trans "my profile" %}
+                            profilim
                         </a>
                         <a class="dropdown-item" href="{% url 'user_preferences' %}">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#cog-border"></use>
                             </svg>
-                            {% trans "settings" %}
+                            ayarlar
                         </a>
                         <a class="dropdown-item" href="{% url 'category_list' %}">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#bookmarks"></use>
                             </svg>
-                            {% trans "channels" %}
+                            kanallar
                         </a>
                         {% if not user.is_novice %}
                             <a class="dropdown-item" href="{% url 'image-list' %}">
                                 <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <use href="#images"></use>
                                 </svg>
-                                {% trans "my images" %}
+                                görsellerim
                             </a>
                         {% endif %}
                         <a class="dropdown-item" href="{% url 'people' %}">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#people"></use>
                             </svg>
-                            {% trans "following/blocked" %}
+                            takip/engellenmiş
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'logout' %}">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#logout"></use>
                             </svg>
-                            {% trans "log out" %}
+                            çıkış
                         </a>
                     </div>
                 </nav>
 
 
             {% else %}
-                <nav class="usermenu" aria-label="{% trans "Account Menu" %}">
+                <nav class="usermenu" aria-label="Hesap menüsü">
                     <ul class="m-0 py-1 px-0">
-                        <li><a href="{% url 'login' %}?next={% firstof request.get_full_path|urlencode '/' %}">{% trans "log in" %}</a></li>
-                        <li><a href="{% url 'register' %}">{% trans "register" %}</a></li>
+                        <li><a href="{% url 'login' %}?next={% firstof request.get_full_path|urlencode '/' %}">giriş</a></li>
+                        <li><a href="{% url 'register' %}">kaydol</a></li>
                     </ul>
                 </nav>
             {% endif %}
@@ -161,7 +161,7 @@
         </div>
 
         {# <!--- categories and mobile navigation --> #}
-        <nav class="sub-nav" aria-label="{% trans "Category menu" %}">
+        <nav class="sub-nav" aria-label="Kategori menüsü">
             <ul class="mobile-only">
                 {% render_header_link "today" %}
                 {% render_header_link "popular" %}
@@ -173,7 +173,7 @@
                     <li class="key-clickable" tabindex="0" id="usermenu_mobile" data-toggle="dropdown">
                         <svg fill="currentColor" width="16" height="24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <use href="#more"></use>
-                            <title>{% trans "Account Menu" %}</title>
+                            <title>Hesap menüsü</title>
                         </svg>
                     </li>
 
@@ -182,67 +182,67 @@
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#bookmarks"></use>
                             </svg>
-                            {% trans "channels" %}
+                            kanallar
                         </a>
                         <a href="{% url "topic_list" slug="drafts" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#saved"></use>
                             </svg>
-                            {% trans "drafts" %}
+                            kenar
                         </a>
                         <a href="{% url "topic_list" slug="wishes" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#present"></use>
                             </svg>
-                            {% trans "wishes" %}
+                            Ukteler
                         </a>
                         <a href="{% url "topic_list" slug="followups" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#side-note"></use>
                             </svg>
-                            {% trans "followups" %}
+                            son
                         </a>
                         <a href="{% url "topic_list" slug="novices" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#experimental"></use>
                             </svg>
-                            {% trans "novices" %}
+                            adaylar
                         </a>
                         <a href="{% url "topic_list" slug="search" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#search"></use>
                             </svg>
-                            {% trans "advanced search" %}
+                            gelişmiş arama
                         </a>
                         {% if not user.is_novice %}
                             <a class="dropdown-item" href="{% url 'image-list' %}">
                                 <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <use href="#images"></use>
                                 </svg>
-                                {% trans "my images" %}
+                                görsellerim
                             </a>
                         {% endif %}
                         <a href="{% url "people" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#people"></use>
                             </svg>
-                            {% trans "following/blocked" %}
+                            takip/engellenmiş
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="{% url "logout" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#logout"></use>
                             </svg>
-                            {% trans "log out" %}
+                            çıkış
                         </a>
                     </div>
 
                 {% else %}
                     <li>
-                        <a href="{% url 'login' %}?next={% firstof request.get_full_path|urlencode '/' %}">{% trans "log in" %}</a>
+                        <a href="{% url 'login' %}?next={% firstof request.get_full_path|urlencode '/' %}">giriş</a>
                     </li>
                     <li>
-                        <a href="{% url 'register' %}">{% trans "register" %}</a>
+                        <a href="{% url 'register' %}">kayıt ol</a>
                     </li>
                 {% endif %}
             </ul>
@@ -265,7 +265,7 @@
                     </li>
                 {% endfor %}
 
-                <li class="key-clickable" id="category-expand" data-toggle="dropdown" tabindex="0" aria-haspopup="true" aria-label="{% trans "Other Channels" %}">
+                <li class="key-clickable" id="category-expand" data-toggle="dropdown" tabindex="0" aria-haspopup="true" aria-label="diğer kanallar">
                     <svg fill="currentColor" width="16" height="24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                         <use href="#more"></use>
                     </svg>
@@ -278,8 +278,8 @@
                     {% endfor %}
 
                     <div class="dropdown-divider"></div>
-                    <a title="{% trans "topics with no channels" %}" class="dropdown-item{% if left_frame.slug == "uncategorized" %} active{% endif %}" data-lf-slug="uncategorized" href="{% url 'topic_list' slug='uncategorized' %}">{% trans "uncategorized" %}</a>
-                    <a href="{% url 'category_list' %}" class="dropdown-item regular">{% trans "all channels" %}</a>
+                    <a title="kanalsız başlıklar" class="dropdown-item{% if left_frame.slug == "uncategorized" %} active{% endif %}" data-lf-slug="uncategorized" href="{% url 'topic_list' slug='uncategorized' %}">kategorisiz</a>
+                    <a href="{% url 'category_list' %}" class="dropdown-item regular">bütün kanallar</a>
                 </div>
             </ul>
         </nav>
@@ -293,7 +293,7 @@
 <div class="container content{{ request.is_mobile|yesno:" lf-hidden," }}">
 
     {% if not request.is_mobile %}
-        <aside class="left-frame tinybar" id="left-frame-nav" aria-label="{% trans "Topic list" %}">
+        <aside class="left-frame tinybar" id="left-frame-nav" aria-label="Başlık listesi">
             {% include "dictionary/includes/left_frame.html" %}
         </aside>
     {% endif %}
@@ -318,13 +318,13 @@
                     <button class="btn btn-sm m-0 p-0" data-toggle="theme">
                         <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                             <use href="#{% if request.theme == "dark" %}sun{% else %}moon{% endif %}"></use>
-                            <title>{% trans "Toggle dark mode" %}</title>
+                            <title>Tema geçişi yap</title>
                         </svg>
                     </button>
                 </header>
                 <ul>
-                    <li><a href="{% url 'general-report' %}">{% trans "contact" %}</a></li>
-                    <li><a href="{% url 'announcements-index' %}">{% trans "announcements" %}</a></li>
+                    <li><a href="{% url 'general-report' %}">iletişim</a></li>
+                    <li><a href="{% url 'announcements-index' %}">duyurular</a></li>
                     {% for page in flatpages|order_by:"-metaflatpage__weight url" %}
                         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
                     {% endfor %}
@@ -361,7 +361,7 @@
         {% url "messages"  as messages_path %}
         {% url 'activity' as activity_path %}
 
-        <a href="{{ activity_path }}" aria-label="{% trans "following topics" %}"{{ request.path|startswith:activity_path|yesno:' class=active,' }}>
+        <a href="{{ activity_path }}" aria-label="takip ettiğim başlıklar"{{ request.path|startswith:activity_path|yesno:' class=active,' }}>
             <svg fill="currentColor" width="28" height="28" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <use href="#bell"></use>
             </svg>
@@ -370,7 +370,7 @@
             {% endif %}
         </a>
 
-        <a href="{{ messages_path }}" aria-label="{% trans "messages" %}"{{ request.path|startswith:messages_path|yesno:' class=active,' }}>
+        <a href="{{ messages_path }}" aria-label="mesajlar"{{ request.path|startswith:messages_path|yesno:' class=active,' }}>
             <svg style="transform: scaleX(-1);" fill="currentColor" width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <use href="#chat"></use>
             </svg>
@@ -379,21 +379,21 @@
             {% endif %}
         </a>
 
-        <a href="{{ create_path }}" aria-label="{% trans "create new entry" %}"{{ request.path|startswith:create_path|yesno:' class=active,' }}>
+        <a href="{{ create_path }}" aria-label="yeni girdi oluştur"{{ request.path|startswith:create_path|yesno:' class=active,' }}>
             <svg fill="currentColor" width="24" height="24" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
                 <use href="#edit"></use>
             </svg>
         </a>
 
         {% with user.get_absolute_url as user_path %}
-            <a href="{{ user_path }}" aria-label="{% trans "my profile" %}"{{ request.path|startswith:user_path|yesno:' class=active,' }}>
+            <a href="{{ user_path }}" aria-label="profilim"{{ request.path|startswith:user_path|yesno:' class=active,' }}>
                 <svg fill="currentColor" width="28" height="28" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                     <use href="#person"></use>
                 </svg>
             </a>
         {% endwith %}
 
-        <a href="{{ settings_path }}" aria-label="{% trans "settings" %}"{{ request.path|startswith:settings_path|yesno:' class=active,' }}>
+        <a href="{{ settings_path }}" aria-label="ayarlar"{{ request.path|startswith:settings_path|yesno:' class=active,' }}>
             <svg fill="currentColor" width="28" height="28" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <use href="#cog-border"></use>
             </svg>

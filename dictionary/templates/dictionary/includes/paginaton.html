@@ -5,18 +5,18 @@
 
         <div class="{{ classlist|default:"lf_pagination" }}{% if stretch == "yes" %} stretch{% endif %}{{ index|yesno:" index," }}">
             {% if page_obj.has_previous %}
-                <a class="shadow-focus mr-1" title="{% trans "previous page" %}" href="?{% url_replace request 'page' page_obj.previous_page_number %}">«</a>
+                <a class="shadow-focus mr-1" title="önceki sayfa" href="?{% url_replace request 'page' page_obj.previous_page_number %}">«</a>
             {% endif %}
 
-            <select class="page-selector shadow-focus" aria-label="{% trans "Page selector" %}" data-max="{{ page_obj.paginator.num_pages }}">
+            <select class="page-selector shadow-focus" aria-label="Sayfaseçer" data-max="{{ page_obj.paginator.num_pages }}">
                 <option selected>{{ page_obj.number}}</option>
             </select>
 
             <span class="mx-2" style="line-height: 25px">&sol;</span>
-            <a class="number shadow-focus" title="{% trans "last page" %}" href="?{% url_replace request 'page' page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+            <a class="number shadow-focus" title="önceki sayfa" href="?{% url_replace request 'page' page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
 
             {% if page_obj.has_next %}
-                <a class="shadow-focus ml-1" title="{% trans "subsequent page" %}" href="?{% url_replace request 'page' page_obj.next_page_number %}" style="margin-left:4px;">»</a>
+                <a class="shadow-focus ml-1" title="sonraki sayfa" href="?{% url_replace request 'page' page_obj.next_page_number %}" style="margin-left:4px;">»</a>
             {% endif %}
         </div>
     {% endif %}

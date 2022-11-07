@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block supertitle %}{{ request.site.name }} - özgür bilgi kaynağı{% endblock %}
+{% block supertitle %}{{ request.site.name }} - vasattan firar{% endblock %}
 {% block bodyclass %} has-entries{% endblock %}
 {% block bodyattr %}{% if user.is_authenticated and user.pinned_entry_id %} data-pin="{{ user.pinned_entry_id }}"{% endif %}{% endblock %}
 {% block content %}
@@ -16,7 +16,7 @@
         </section>
     {% else %}
         <div class="border rounded p-3 bg-light">
-            <span>{% trans "no entries found suitable for display 🤷" %}</span>
+            <span>gösterime uygun girdi yok 🤷</span>
             {% if index_type == "random_records" %}
                 <hr>
                 <p class="m-0">

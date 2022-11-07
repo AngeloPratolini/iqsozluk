@@ -1,10 +1,10 @@
 {% extends "dictionary/base.html" %}
 {% load widget_tweaks i18n %}
 
-{% block title %}{% trans "resend e-mail confirmation" context "titleblock" %}{% endblock %}
+{% block title %}yeniden doğrula{% endblock %}
 {% block content %}
     <h1 class="h4 mb-3">
-        <strong><a href="{% url 'login' %}">{% trans "log in" %}</a> &raquo; {% trans "resend e-mail confirmation" context "titleblock" %}</strong></h1>
+        <strong><a href="{% url 'login' %}">giriş yap</a> &raquo; doğrulama e-postasını tekrar gönder</strong></h1>
 
     {% if form.non_field_errors %}
         {% for error in form.non_field_errors %}
@@ -22,6 +22,6 @@
         </div>
 
         {% csrf_token %}
-        <button class="btn btn-django stretch">{% trans "send it again please" %}</button>
+        <button class="btn btn-django stretch">e-postayı tekrar gönder</button>
     </form>
 {% endblock %}

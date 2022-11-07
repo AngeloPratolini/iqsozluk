@@ -1,16 +1,16 @@
 {% extends "dictionary/base.html" %}
 {% load functions widget_tweaks i18n %}
-{% block title %}{% trans "contact" context "titleblock" %}{% endblock %}
+{% block title %}iletişim{% endblock %}
 
 {% block content %}
-    <h1 class="h4"><strong>{% trans "contact" context "titleblock" %}</strong></h1>
-    <h2 class="h5 text-muted">{% trans "matters to consider" %}</h2>
+    <h1 class="h4"><strong>iletişim</strong></h1>
+    <h2 class="h5 text-muted">dikkat edilecek hususlar</h2>
     <ol class="px-4">
-        <li>{% blocktrans with faq_url="/faq/" %}please visit <a href="{{ faq_url }}">frequently asked questions</a> page before submitting reports.{% endblocktrans %}</li>
-        <li>{% trans "please state your requests and complaints in a comprehensible and concise way." %}</li>
-        <li>{% trans "we will not notify other authors if you decide to report them, this is done anonymously." %}</li>
-        <li>{% trans "provide an e-mail address for confirmation and feedback. if you are logged in already, we will use your registered e-mail address." %}</li>
-        <li>{% trans "if have multiple statements, please consider them all in a report instead of sending them in seperate reports." %}</li>
+        <li>{% blocktrans with faq_url="/faq/" %}Lütfen önce <a href="{{ faq_url }}">sıkça sorulan sorular</a> sayfasını ziyaret edin.{% endblocktrans %}</li>
+        <li>lütfen istek veya şikayetinizi anlaşılır bir şekilde dile getirin.</li>
+        <li>yazarları ilgilendiren şikayetlerinizde yazarların şikayetinizden haberi olmayacaktır</li>
+        <li>onaylama ve geriş dönüş için geçerli bir e-posta adresi belirtin. eğer halihazırda üye iseniz kayıt olurken kullandığınız e-posta adresiniz kullanılacak.</li>
+        <li>her bir girdi, başlık veya kullanıcı için ayrı şikayet oluşturmak yerine toplu halde bir şikayet oluşturmanız, insanlık için olumlu olacaktır.</li>
     </ol>
 
     <form method="post" class="reporting-form">
@@ -37,6 +37,6 @@
         </div>
 
         {% csrf_token %}
-        <button class="btn btn-django stretch mb-3">{% trans "send" %}</button>
+        <button class="btn btn-django stretch mb-3">yolla</button>
     </form>
 {% endblock %}
