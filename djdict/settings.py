@@ -161,7 +161,6 @@ USE_L10N = True
 USE_TZ = True
 LANGUAGES = (
     ("tr", _("Turkish")),
-    ("en", _("English")),
 )
 
 

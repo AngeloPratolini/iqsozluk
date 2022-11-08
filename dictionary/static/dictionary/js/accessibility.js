@@ -59,7 +59,7 @@ Handler("form", "submit", function (event) {
 
     if (userInput && userInput.value) {
         if (!isValidText(userInput.value)) {
-            notify(gettext("this content includes forbidden characters."), "error")
+            notify(gettext("bu içerik uygun olmayan karakterler içeriyor."), "error")
             window.onbeforeunload = () => true
             event.preventDefault()
             return false

@@ -25,17 +25,17 @@ function insertMeta (type) {
 
     switch (type) {
         case "ref":
-            fmt = [gettext("target topic, #entry or @author to reference:"), text => `(${pgettext("editor", "see")}: ${text})`]
+            fmt = [gettext("referans verilecek başlık, #girdi veya @yazar:"), text => `(${pgettext("editor", "see")}: ${text})`]
             break
         case "thingy":
-            fmt = [gettext("target topic, #entry or @author to thingy:"), text => `\`${text}\``]
+            fmt = [gettext("hangi başlık veya #entry için hede oluşturulacak?"), text => `\`${text}\``]
             break
         case "swh":
-            fmt = [gettext("what should be referenced in asterisk?"), text => `\`:${text}\``]
+            fmt = [gettext("yıldız içinde ne görünsün?"), text => `\`:${text}\``]
             break
         case "spoiler": {
             const spoiler = gettext("spoiler")
-            fmt = [gettext("what to write between spoiler tags?"), text => `--\`${spoiler}\`--\n${text}\n--\`${spoiler}\`--`]
+            fmt = [gettext("spoiler arasına ne yazılacak?"), text => `--\`${spoiler}\`--\n${text}\n--\`${spoiler}\`--`]
             break
         }
     }
@@ -52,7 +52,7 @@ function replaceText (textarea, type) {
         return false
     } else {
         if (type === "link") {
-            const linkText = prompt(gettext("which address to link?"), "http://")
+            const linkText = prompt(gettext("hangi adrese gidecek?"), "http://")
             if (linkText && linkText !== "http://") {
                 textarea.value = allText.substring(0, start) + `[${linkText} ${sel}]` + allText.substring(finish, allText.length)
             }
@@ -83,9 +83,9 @@ Handle("button#insert_image", "click", () => {
 
 Handle("button#insert_link", "click", () => {
     if (!replaceText(userContent, "link")) {
-        const linkText = prompt(gettext("which address to link?"), "http://")
+        const linkText = prompt(gettext("verilecek linkin adı ne olacak?"), "http://")
         if (linkText && linkText !== "http://") {
-            const linkName = prompt(gettext("alias for the link?"))
+            const linkName = prompt(gettext("verilecek linkin adı ne olacak?"))
             const text = linkName ? `[${linkText} ${linkName}]` : linkText
             insertAtCaret(userContent, text)
         }
@@ -116,22 +116,22 @@ Dropzone.options.userImageUpload = {
     maxFilesize: 2.5, // MB
     acceptedFiles: "image/*",
     maxFiles: 10,
-    dictRemoveFileConfirmation: gettext("Are you sure?"),
-    dictDefaultMessage: gettext("click or drop files here to upload"),
-    dictRemoveFile: gettext("delete image"),
-    dictFileTooBig: gettext("File is too big ({{filesize}}MB). Max filesize: {{maxFilesize}}MB."),
-    dictMaxFilesExceeded: gettext("You can not upload any more files."),
-    dictUploadCanceled: gettext("Upload canceled."),
-    dictCancelUploadConfirmation: gettext("Are you sure?"),
+    dictRemoveFileConfirmation: gettext("emin misiniz?"),
+    dictDefaultMessage: gettext("buraya tıklayıp görselleri seçin veya sürükleyip bırakın"),
+    dictRemoveFile: gettext("görseli sil"),
+    dictFileTooBig: gettext("Dosya çok büyük ({{filesize}}MB). Maksimum boyut: {{maxFilesize}}MB."),
+    dictMaxFilesExceeded: gettext("Daha fazla dosya yükleyemezsiniz."),
+    dictUploadCanceled: gettext("yükleme iptal edildi."),
+    dictCancelUploadConfirmation: gettext("Emin misiniz?"),
 
     success (file, response) {
-        insertAtCaret(userContent, `(${pgettext("editor", "image")}: ${response.slug})`)
+        insertAtCaret(userContent, `(${pgettext("editor", "görsel")}: ${response.slug})`)
     },
 
     removedfile (file) {
         file.previewElement.remove()
         const slug = JSON.parse(file.xhr.response).slug
-        userContent.value = userContent.value.replace(new RegExp(`\\(${pgettext("editor", "image")}: ${slug}\\)`, "g"), "")
+        userContent.value = userContent.value.replace(new RegExp(`\\(${pgettext("editor", "görsel")}: ${slug}\\)`, "g"), "")
         deleteImage(slug)
     }
 }

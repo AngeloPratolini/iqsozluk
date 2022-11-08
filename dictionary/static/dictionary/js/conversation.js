@@ -46,7 +46,7 @@ function deleteConversation (pkSet, mode) {
 // Delete (archives and active conversations)
 
 Handler("a[role=button].chat-delete-individual", "click", function () {
-    if (!confirm(gettext("are you sure to delete?"))) {
+    if (!confirm(gettext("silmek istediğine emin misin?"))) {
         return false
     }
 
@@ -58,7 +58,7 @@ Handler("a[role=button].chat-delete-individual", "click", function () {
         if (data) {
             if (many("li.chat").length > 1) {
                 chat.remove()
-                notify(gettext("deleted conversation"))
+                notify(gettext("silinmiş konuşma"))
             } else {
                 window.location = data.redirect
             }
@@ -70,7 +70,7 @@ Handle("a[role=button].chat-delete", "click", () => {
     const selected = many("li.chat.selected")
 
     if (selected.length) {
-        if (!confirm(gettext("are you sure to delete all selected conversations?"))) {
+        if (!confirm(gettext("seçilen konuşmaların hepsini silmek istediğine emin misin?"))) {
             return false
         }
 
@@ -81,7 +81,7 @@ Handle("a[role=button].chat-delete", "click", () => {
             }
         })
     } else {
-        notify(gettext("you need to select at least one conversation to delete"), "error")
+        notify(gettext("silmek için en az 1 konuşma seçilmeli"), "error")
     }
 })
 
@@ -97,7 +97,7 @@ Handle("a[role=button].chat-archive", "click", () => {
     const selected = many("li.chat.selected")
 
     if (selected.length) {
-        if (!confirm(gettext("are you sure to archive all selected conversations?"))) {
+        if (!confirm(gettext("seçilen konuşmaların hepsi arşivlensin mi?"))) {
             return false
         }
 
@@ -108,12 +108,12 @@ Handle("a[role=button].chat-archive", "click", () => {
             }
         })
     } else {
-        notify(gettext("you need to select at least one conversation to archive"), "error")
+        notify(gettext("arşivlemek için ene az 1 konuşma seçilmeli"), "error")
     }
 })
 
 Handler("a[role=button].chat-archive-individual", "click", function () {
-    if (!confirm(gettext("are you sure to archive?"))) {
+    if (!confirm(gettext("arşivlemek istediğine emin misin?"))) {
         return false
     }
 
@@ -124,7 +124,7 @@ Handler("a[role=button].chat-archive-individual", "click", function () {
         if (data) {
             if (many("li.chat").length > 1) {
                 chat.remove()
-                notify(gettext("archived conversation"))
+                notify(gettext("arşivlenmiş konuşma"))
             } else {
                 window.location = data.redirect
             }
@@ -155,7 +155,7 @@ Handler("#message_list .dropdown-menu", "click", function (event) {
                 return
             }
             if (response.data.message.delete.immediate === "true") {
-                notify(gettext("hopefully they didn't see that one."), "info")
+                notify(gettext("görülmemiş olduğunu umuyoruz."), "info")
             }
         })
     }
