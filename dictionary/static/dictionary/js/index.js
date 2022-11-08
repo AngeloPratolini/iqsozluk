@@ -12,3 +12,5 @@ import "./entry"
 
 import "./search"
 import "./topic"
+
+import "./left-frame"

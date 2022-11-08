@@ -203,7 +203,8 @@ class LeftFrame {
             let topics = ""
 
             objectList.forEach(topic => {
-                topics += `<li class="list-group-item"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+            console.log('naber')
+                topics += `<li class="HÜLOOO"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
             })
 
             if (topics) {
