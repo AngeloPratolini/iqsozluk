@@ -3355,13 +3355,32 @@ const themeExpires = 90;
 function setTheme(theme) {
     const body = (0, _utils.one)("body");
     const icon = (0, _utils.one)("[data-toggle=theme]").querySelector("use");
+    const entries = document.querySelectorAll(".girdi");
     body.style.transition = "background-color .5s ease";
     if (theme === "dark") {
         body.classList.add("dark");
         icon.setAttribute("href", "#sun");
+        entries.forEach((entry)=>{
+            if (entry.classList.value.includes("sorulu")) {
+                entry.classList.remove("sorulu");
+                entry.classList.add("soruluDARK"); //"#2B2B2B" //32835E
+            } else if (entry.classList.value.includes("unlemli")) {
+                entry.classList.remove("unlemli");
+                entry.classList.add("unlemliDARK");
+            }
+        });
     } else {
         body.classList.remove("dark");
         icon.setAttribute("href", "#moon");
+        entries.forEach((entry)=>{
+            if (entry.classList.value.includes("sorulu")) {
+                entry.classList.remove("soruluDARK");
+                entry.classList.add("sorulu"); //"#2B2B2B" //32835E
+            } else if (entry.classList.value.includes("unlemli")) {
+                entry.classList.remove("unlemliDARK");
+                entry.classList.add("unlemli");
+            }
+        });
     }
 }
 (0, _utils.Handle)("[data-toggle=theme]", "click", function() {
@@ -12628,9 +12647,9 @@ class LeftFrame {
             const params = parameters || "";
             let topics = "";
             objectList.forEach((topic)=>{
-                if (topic.title.slice(-1) === "?") topics += `<li class="sorulu"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
-                else if (topic.title.charAt(0) === "!") topics += `<li class="unlemli"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
-                else topics += `<li class="list-group-item"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                if (topic.title.slice(-1) === "?") topics += `<li class="sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                else if (topic.title.charAt(0) === "!") topics += `<li class="unlemli girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                else topics += `<li class="list-group-item girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
             });
             if (topics) topicList.innerHTML = topics;
         }

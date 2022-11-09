@@ -1,2 +1,2 @@
-console.log("parcel tamam");
+console.log("Hellö^^");
 //# sourceMappingURL=bundle.js.map

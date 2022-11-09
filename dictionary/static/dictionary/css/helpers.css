@@ -1244,13 +1244,25 @@ body.dark .border {
     position: relative;
     display: block;
     padding: .75rem 1.25rem;
-    background-color:red;
+    background-color:#EAEAEA;
+}
+.soruluDARK {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color:#2B2B2B;
 }
 .unlemli {
     position: relative;
     display: block;
     padding: .75rem 1.25rem;
-    background-color:blue;
+    background-color:#F2D1A8;
+}
+.unlemliDARK {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color:#423F3E;
 }
 
 code {
