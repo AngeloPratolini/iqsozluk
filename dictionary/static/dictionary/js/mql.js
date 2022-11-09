@@ -152,6 +152,7 @@ function setTheme (theme) {
              entry.classList.add("unlemliDARK");
             }
         })
+        location.reload()
     } else {
         body.classList.remove("dark")
         icon.setAttribute("href", "#moon")
@@ -165,6 +166,7 @@ function setTheme (theme) {
              entry.classList.add("unlemli");
             }
         })
+        location.reload()
     }
 }
 

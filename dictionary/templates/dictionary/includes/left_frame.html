@@ -96,13 +96,26 @@
             <ul id="topic-list" class="list-group topic-list">
             {% if lf.page.object_list %}
                 {% for topic in lf.page.object_list %}
+                    {% if request.theme == "dark" and topic.title|slice:"-1:" == "?" %}
 
-                {%if topic.title|slice:"-1:" == "?"%}
+                    <li class="soruluDARK girdi" >
+                        <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
+                    </li>
+
+                    {% elif request.theme == "dark" and topic.title|slice:"1" == "!" %}
+
+                     <li class="unlemliDARK girdi">
+                        <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
+                    </li>
+
+                    {% elif request.theme != "dark" and topic.title|slice:"-1:" == "?" %}
+
                     <li class="sorulu girdi" >
                         <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
                     </li>
 
-                {%elif topic.title|slice:"1" == "!" %}
+                     {% elif request.theme != "dark" and topic.title|slice:"1" == "!" %}
+
                      <li class="unlemli girdi">
                         <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
                     </li>

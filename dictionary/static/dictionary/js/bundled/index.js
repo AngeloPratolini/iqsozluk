@@ -3369,6 +3369,7 @@ function setTheme(theme) {
                 entry.classList.add("unlemliDARK");
             }
         });
+        location.reload();
     } else {
         body.classList.remove("dark");
         icon.setAttribute("href", "#moon");
@@ -3381,6 +3382,7 @@ function setTheme(theme) {
                 entry.classList.add("unlemli");
             }
         });
+        location.reload();
     }
 }
 (0, _utils.Handle)("[data-toggle=theme]", "click", function() {
@@ -12647,9 +12649,13 @@ class LeftFrame {
             const params = parameters || "";
             let topics = "";
             objectList.forEach((topic)=>{
-                if (topic.title.slice(-1) === "?") topics += `<li class="sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
-                else if (topic.title.charAt(0) === "!") topics += `<li class="unlemli girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                const body = (0, _utils.one)("body");
+                if (topic.title.slice(-1) === "?" && body.classList.value === "dark") topics += `<li class=" soruluDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                else if (topic.title.slice(-1) === "?" && body.classList.value !== "dark") topics += `<li class=" sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                else if (topic.title.charAt(0) === "!" && body.classList.value === "dark") topics += `<li class="unlemliDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                else if (topic.title.charAt(0) === "!" && body.classList.value !== "dark") topics += `<li class="unlemli girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
                 else topics += `<li class="list-group-item girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${(0, _utils.notSafe)(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`;
+                location.reload();
             });
             if (topics) topicList.innerHTML = topics;
         }

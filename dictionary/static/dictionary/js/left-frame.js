@@ -203,22 +203,34 @@ class LeftFrame {
             let topics = ""
 
             objectList.forEach(topic => {
-            if(topic.title.slice(-1)==="?"){
-            topics += `<li class="sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+
+            const body = one("body")
+
+            if(topic.title.slice(-1)==="?" && body.classList.value === "dark"){
+            topics += `<li class=" soruluDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+
             }
-            else if(topic.title.charAt(0)==="!"){
+            else if(topic.title.slice(-1)==="?" && body.classList.value !== "dark"){
+            topics += `<li class=" sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+
+            }
+            else if(topic.title.charAt(0)==="!" && body.classList.value === "dark"){
+            topics += `<li class="unlemliDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+
+            }
+            else if(topic.title.charAt(0)==="!" && body.classList.value !== "dark"){
             topics += `<li class="unlemli girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+
             }
             else {
             topics += `<li class="list-group-item girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
-            }
 
-
-
-            })
+            }location.reload()
+            } )
 
             if (topics) {
                 topicList.innerHTML = topics
+
             }
         }
     }
