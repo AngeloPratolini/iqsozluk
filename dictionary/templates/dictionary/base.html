@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap">
 
     <script defer src="{% url 'javascript-catalog' %}"></script>
-    <script defer src="{% static 'dictionary/js/dist/index.js' %}"></script>
+    <!--<script defer src="{% static 'dictionary/js/dist/index.js' %}"></script>-->
+    <script defer type="module" src="{% static 'dictionary/js/bundled/index.js' %} "></script>
+
     <title>{% block supertitle %}{% block title %}{% endblock %} - {{ request.site.name }}{% endblock %}</title>
 </head>
 <body class="{{ request.theme }}{% block bodyclass %}{% endblock %}" {% block bodyattr %}{% endblock %} id="{{ user.is_authenticated|yesno:"au,ua" }}">

@@ -98,13 +98,13 @@
                 {% for topic in lf.page.object_list %}
 
                 {%if topic.title|slice:"-1:" == "?"%}
-                    <li class="list-group-item" style="background-color:red;">
-                        <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}sorulu<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
+                    <li class="sorulu" style="background-color:red;">
+                        <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
                     </li>
 
-                {%elif topic.title|slice:"-1:" == "!"%}
-                     <li class="list-group-item" style="background-color:blue;">
-                        <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}ünlemli<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
+                {%elif topic.title|slice:"1" == "!" %}
+                     <li class="unlemli" style="background-color:blue;">
+                        <a href="{{ lf.slug_identifier }}{{ topic.slug }}/{{ lf.parameters }}">{{ topic.title }}<small class="total_entries">{% if topic.count %}{{ topic.count|humanize_count }}{% endif %}</small></a>
                     </li>
 
                 {% else %}

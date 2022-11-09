@@ -1240,6 +1240,18 @@ body.dark .border {
     display: block;
     padding: .75rem 1.25rem;
 }
+.sorulu {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color:red;
+}
+.unlemli {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color:blue;
+}
 
 code {
     font-size: 87.5%;
