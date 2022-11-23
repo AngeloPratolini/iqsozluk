@@ -25,6 +25,8 @@ services:
   db:
     image: postgres:13.1-alpine
     user: postgres
+    ports:
+      - "5432:5432"
     env_file:
       - .env.db
   redis:
