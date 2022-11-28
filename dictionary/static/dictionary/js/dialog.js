@@ -54,12 +54,12 @@ Handle("#send_message_btn", "click", function () {
 
     if (body.length < 3) {
         // not strictly needed but written so as to reduce api calls.
-        notify(gettext("keşke bir şeyler yazsaydın"), "error")
+        notify(gettext("if only you could write down something"), "error")
         return
     }
 
     if (!isValidText(body)) {
-        notify(gettext("yasaklı karakterler mevcut."), "error")
+        notify(gettext("this content includes forbidden characters."), "error")
         return
     }
 

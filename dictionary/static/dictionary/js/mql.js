@@ -136,37 +136,14 @@ const themeExpires = 90
 function setTheme (theme) {
     const body = one("body")
     const icon = one("[data-toggle=theme]").querySelector("use")
-    const entries= document.querySelectorAll(".girdi")
     body.style.transition = "background-color .5s ease"
 
     if (theme === "dark") {
         body.classList.add("dark")
         icon.setAttribute("href", "#sun")
-        entries.forEach(entry=>{
-            if(entry.classList.value.includes("sorulu")){
-            entry.classList.remove("sorulu");
-            entry.classList.add("soruluDARK"); //"#2B2B2B" //32835E
-            }
-            else if(entry.classList.value.includes("unlemli")){
-             entry.classList.remove("unlemli");
-             entry.classList.add("unlemliDARK");
-            }
-        })
-        location.reload()
     } else {
         body.classList.remove("dark")
         icon.setAttribute("href", "#moon")
-                entries.forEach(entry=>{
-            if(entry.classList.value.includes("sorulu")){
-            entry.classList.remove("soruluDARK");
-            entry.classList.add("sorulu"); //"#2B2B2B" //32835E
-            }
-            else if(entry.classList.value.includes("unlemli")){
-             entry.classList.remove("unlemliDARK");
-             entry.classList.add("unlemli");
-            }
-        })
-        location.reload()
     }
 }
 

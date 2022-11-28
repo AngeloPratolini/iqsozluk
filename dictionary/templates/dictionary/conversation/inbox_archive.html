@@ -14,7 +14,7 @@
                                 <h2 class="h5">{{ object.target }}</h2>
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="chat-selector custom-control-input" id="_arc{{ object.pk }}">
-                                    <label class="text-hide custom-control-label" for="_arc{{ object.pk }}">seç</label>
+                                    <label class="text-hide custom-control-label" for="_arc{{ object.pk }}">{% trans "select" %}</label>
                                 </div>
                             </header>
                             <p>{{ lastmsg.body|truncatechars:225 }}</p>
@@ -22,7 +22,7 @@
 
                         <footer class="d-flex justify-content-between fs-90">
                             <div>
-                                <a role="button" tabindex="0" class="chat-delete-individual mr-1">sil</a>
+                                <a role="button" tabindex="0" class="chat-delete-individual mr-1">{% trans "delete" %}</a>
                             </div>
                             <time>{{ lastmsg.sent_at|strdate|naturalday }}</time>
                         </footer>
@@ -31,6 +31,6 @@
             {% endfor %}
         </ul>
     {% else %}
-        <div class="border rounded p-3 bg-light">arşiviniz boş🤔</div>
+        <div class="border rounded p-3 bg-light">{% trans "your archive is empty 🤔" %}</div>
     {% endif %}
 {% endblock %}

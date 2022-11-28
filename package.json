@@ -4,16 +4,7 @@
   "browserslist": [
     "since 2017-06"
   ],
-  "main": "index.js",
-  "targets": {
-  "main": false
-},
-  "scripts": {
-    "build": "parcel build dictionary/static/dictionary/js/bundled/bundle.js --dist-dir dictionary/static/dictionary/js/bundled",
-    "watch": "parcel watch dictionary/static/dictionary/js/index.js --dist-dir dictionary/static/dictionary/js/bundled  "
-  },
   "devDependencies": {
-    "parcel": "^2.8.0",
     "standard": "^14.3.4",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0"

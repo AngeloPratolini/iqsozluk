@@ -11,7 +11,7 @@
     <section class="user-content mt-3">
         {% if entry.is_draft %}
             <section class="pw-area">
-                <h2 class="h5 text-muted">önizleme</h2>
+                <h2 class="h5 text-muted">{% trans "preview" %}</h2>
                 <p class="text-formatted pw-text">{{ entry.content|formatted|linebreaksbr }}</p>
             </section>
         {% endif %}
@@ -35,11 +35,11 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <div>
                         {% if entry.is_draft %}
-                            <button type="button" class="btn draft-async px-0 mr-3" data-pk="{{ entry.pk }}">değişiklikleri kaydet</button>
+                            <button type="button" class="btn draft-async px-0 mr-3" data-pk="{{ entry.pk }}">{% trans "save changes" %}</button>
                         {% endif %}
-                        <button type="button" data-target-entry="{{ entry.id }}" class="btn btn-django-link fs-90 delete-entry-redirect">sil</button>
+                        <button type="button" data-target-entry="{{ entry.id }}" class="btn btn-django-link fs-90 delete-entry-redirect">{% trans "delete" %}</button>
                     </div>
-                    <button type="submit" class="btn btn-django-link"{% if user.is_suspended or entry.topic.is_banned %} title="gerekli izne sahip değilsiniz" disabled{% endif %}>{% trans "publish" %}</button>
+                    <button type="submit" class="btn btn-django-link"{% if user.is_suspended or entry.topic.is_banned %} title="{% trans "you lack the required permissions." %}" disabled{% endif %}>{% trans "publish" %}</button>
                 </div>
             </form>
         </section>

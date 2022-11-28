@@ -3,12 +3,12 @@
 {% block title %}{% trans "register" context "titleblock" %}{% endblock %}
 
 {% block content %}
-    <h1 class="h4 mb-3"><strong>kayıt ol</strong></h1>
+    <h1 class="h4 mb-3"><strong>{% trans "registration" context "titleblock" %}</strong></h1>
     <form method="post" id="signup">
         {% csrf_token %}
 
         {% if form.errors %}
-            <div class="alert-danger p-3 mb-3 rounded">uyarıları dikkate alarak tekrar deneyin</div>
+            <div class="alert-danger p-3 mb-3 rounded">{% trans "please try again after checking specified errors." %}</div>
             {% for error in form.non_field_errors %}
                 <div class="alert-danger p-3 mb-3 rounded">{{ error|lower }}</div>
             {% endfor %}
@@ -76,11 +76,11 @@
             <div class="custom-control custom-checkbox">
                 {% render_field form.terms_conditions class="custom-control-input" id="terms_conditions" %}
                 <label class="custom-control-label" for="terms_conditions">
-                    {% blocktrans with terms_url="/terms-of-use/"%}<a target="_blank" href="{{ terms_url }}">Kullanım koşullarını</a> okudum ve onaylıyorum.{% endblocktrans %}
+                    {% blocktrans with terms_url="/terms-of-use/"%}i have read and agree with the <a target="_blank" href="{{ terms_url }}">terms and conditions</a>.{% endblocktrans %}
                 </label>
             </div>
         {% endwith %}
-        
-        <button onclick="window.scrollTo(0,0);" type="submit" class="btn btn-django stretch my-3"> kaydol</button>
+
+        <button onclick="window.scrollTo(0,0);" type="submit" class="btn btn-django stretch my-3">{% trans "register" %}</button>
     </form>
 {% endblock %}

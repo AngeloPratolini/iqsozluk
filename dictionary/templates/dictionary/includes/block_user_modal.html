@@ -3,26 +3,26 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h1 class="modal-title h5"><strong>insanı engelle: </strong><span id="username-holder"></span></h1>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+                <h1 class="modal-title h5"><strong>{% trans "block the person" %}: </strong><span id="username-holder"></span></h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{% trans "Close" %}">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body py-0">
                 <p>
-                    <span>&nbsp;bu kullanıcıyı engellemek istediğinize emin misiniz? bu işlem sizi de bir şeylerden mahrum bırakır...</span>
+                    <span>&nbsp;{% trans "are you sure about blocking this user? you will be devoid from some things:" %}</span>
                 </p>
                 <ul style="list-style-type: circle;">
-                    <li>bu kullanıcının mesajları bana ulaşmasın</li>
-                    <li>bu kullanıcı profilimi ziyaret edemesin</li>
-                    <li>bu yazarın açtığı başlıklar 'bugün'de görünmesin</li>
-                    <li>bu kullanıcının girdi'lerini bile görmek istemiyorum, kahrolsun</li>
+                    <li>{% trans "you won't be able to send messages to this user (vice versa)" %}</li>
+                    <li>{% trans "you won't be able to visit the profile of this user (vice versa)" %}</li>
+                    <li>{% trans "topics created by this user won't be visible in your today list" %}</li>
+                    <li>{% trans "you won't be able to see the entries of this user" %}</li>
                 </ul>
 
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="btn" data-dismiss="modal">kuzenim yazmış</button>
-                <button type="button" class="btn btn-django-link lead" data-dismiss="modal" id="block_user" data-username="">emrettiğim gibi olsun</button>
+                <button type="button" class="btn" data-dismiss="modal">{% trans "oops, sorry" %}</button>
+                <button type="button" class="btn btn-django-link lead" data-dismiss="modal" id="block_user" data-username="">{% trans "get it over with" %}</button>
             </div>
         </div>
     </div>

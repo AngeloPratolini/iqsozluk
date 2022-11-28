@@ -14,7 +14,7 @@ class DictionaryConfig(AppConfig):
 
     # Settings
 
-    DOMAIN = "iqsozluk.com"
+    DOMAIN = "xyzsozluk.com"
     PROTOCOL = "http"
     FROM_EMAIL = "noreply@xyzsozluk.org"
 
@@ -50,32 +50,32 @@ class DictionaryConfig(AppConfig):
     #  <-----> START OF CATEGORY RELATED SETTINGS <----->  #
 
     NON_DB_CATEGORIES_META = {
-        "today": (_("bugün"), _("son girdi'ler")),
-        "popular": (_("popüler"), _("neler oluyor?")),
-        "uncategorized": (_("serkeş"), _("kategorisiz başlıklar")),
+        "today": (_("today"), _("most recent entries")),
+        "popular": (_("popular"), _("whats happening?")),
+        "uncategorized": (_("uncategorized"), _("topics with no channels")),
         "acquaintances": (
-            _("tanıdıklar"),
-            _("takip ettiğim insanlar ne yapıyor"),
-            ({"entries": _("girdiler"), "favorites": _("favoriler")}, "entries"),
+            _("acquaintances"),
+            _("what are users i follow up to?"),
+            ({"entries": _("entries"), "favorites": _("favorites")}, "entries"),
         ),
         "wishes": (
-            _("ukte"),
-            _("doldurulması istenen başlıklar"),
-            ({"all": _("hepsi"), "owned": _("sahipli")}, "all"),
+            _("wishes"),
+            _("the topics that some authors want populated"),
+            ({"all": _("all"), "owned": _("owned")}, "all"),
         ),
-        "today-in-history": (_("tarihte bugün"), _("geçen sene bugün ne olmuş?")),
-        "drafts": (_("kenardakiler"), _("henüz yayınlamadığım taslaklar")),
-        "followups": (_("takibimdekiler"), _("benden sonra neler dönmüş?")),
-        "novices": (_("adaylar"), _("adayların girdi'leri")),
-        "en iyi": (
-            _("en iyiler"),
-            _("en çok beğenilenler"),
-            ({"yesterday": _("dün"), "week": _("geçen hafta")}, "yesterday"),
+        "today-in-history": (_("today in history"), _("what has been said around this time in the past years?")),
+        "drafts": (_("drafts"), _("the entries that i've yet to publish")),
+        "followups": (_("followups"), _("what other authors wrote down after me?")),
+        "novices": (_("novices"), _("the entries of novice users")),
+        "top": (
+            _("top"),
+            _("most liked entries"),
+            ({"yesterday": _("yesterday"), "week": _("last week")}, "yesterday"),
         ),
-        "search": (_("ara"), _("gelişmiş ara")),
+        "search": (_("search"), _("advanced search")),
         "userstats": (
-            _("kullanıcı istatistikleri"),
-            _("kullanıcı istatistikleri"),
+            _("user statistics"),
+            _("user statistics"),
             (
                 {
                     "latest": _("@%(username)s - entries"),
@@ -204,7 +204,7 @@ class DictionaryConfig(AppConfig):
     You may also (better) use this for debugging purposes.
     """
 
-    YEAR_RANGE = (2022, 2021, 2020)
+    YEAR_RANGE = (2020, 2019, 2018)
     """Years available for today-in-history"""
 
     #  <-----> END OF CATEGORY RELATED SETTINGS <----->  #
@@ -219,7 +219,7 @@ class DictionaryConfig(AppConfig):
     to see which users are newbies.
     """
 
-    FIRST_GENERATION_DATE = "10.11.2022"
+    FIRST_GENERATION_DATE = "13.08.2019"
     """Set this to first user's registration date. (day should be first)"""
 
     GENERATION_GAP_DAYS = 180
@@ -272,37 +272,37 @@ class DictionaryConfig(AppConfig):
     """Similar to daily vote limit per user, but considers all time votes."""
 
     KARMA_EXPRESSIONS = {
-        range(25, 50): _("hevesli"),
-        range(50, 100): _("kıdemli hevesli"),
-        range(100, 125): _("astalebe"),
-        range(125, 150): _("talebe"),
-        range(150, 200): _("üstalebe"),
-        range(200, 250): _("bundanolur"),
-        range(250, 300): _("astemaşacı"),
-        range(300, 350): _("temaşacı"),
-        range(350, 370): _("üstemaşacı"),
-        range(370, 400): _("canım"),
-        range(400, 430): _("erbap"),
-        range(430, 450): _("yarbap"),
-        range(450, 470): _("albap"),
-        range(470, 500): _("ehil"),
-        range(500, 530): _("tuğehil"),
-        range(530, 550): _("tümehil"),
-        range(550, 575): _("korehil"),
-        range(575, 600): _("orehil"),
-        range(600, 620): _("fikir insanı"),
-        range(620, 630): _("büyük fikirlerin insanı"),
-        range(630, 650): _("delikanlı"),
-        range(650, 665): _("centurion"),
-        range(665, 680): _("principe"),
-        range(680, 700): _("triari"),
-        range(700, 725): _("zanaatkar"),
-        range(725, 750): _("bizim çocuk"),
-        range(750, 775): _("mürşid"),
-        range(775, 800): _("üstad"),
-        range(800, 850): _("kalemşör"),
-        range(850, 900): _("canavar"),
-        range(900, 1000): _("ahbap"),
+        range(25, 50): _("chaotic neutral"),
+        range(50, 100): _("chronic backup"),
+        range(100, 125): _("padawan"),
+        range(125, 150): _("lunatic"),
+        range(150, 200): _("fragile anarchist"),
+        range(200, 250): _("anarchist"),
+        range(250, 300): _("turbulent kicker"),
+        range(300, 350): _("anatolian boy"),
+        range(350, 370): _("battal gazi"),
+        range(370, 400): _("thorny"),
+        range(400, 430): _("hippy"),
+        range(430, 450): _("lad"),
+        range(450, 470): _("staid"),
+        range(470, 500): _("rowdy"),
+        range(500, 530): _("richard the blazeheart "),
+        range(530, 550): _("compliant yet sympathetic"),
+        range(550, 575): _("right minded"),
+        range(575, 600): _("presentable"),
+        range(600, 620): _("sugar"),
+        range(620, 630): _("honeypot"),
+        range(630, 650): _("yummier honey"),
+        range(650, 665): _("luscious"),
+        range(665, 680): _("addicted"),
+        range(680, 700): _("switheet"),
+        range(700, 725): _("damascus apricot"),
+        range(725, 750): _("household"),
+        range(750, 775): _("exuberant"),
+        range(775, 800): _("energizer bunny"),
+        range(800, 850): _("courteous"),
+        range(850, 900): _("inhuman"),
+        range(900, 1000): _("rating beast"),
     }
     """
     Karma expressions for specific karma ranges. All expressions are
@@ -324,10 +324,10 @@ class DictionaryConfig(AppConfig):
     other people's karma by voting.
     """
 
-    UNDERWHELMING_KARMA_EXPRESSION = _("embesil")
+    UNDERWHELMING_KARMA_EXPRESSION = _("imbecile")
     """Expression for too low karma points. (decided by KARMA_BOUNDARY_LOWER)"""
 
-    OVERWHELMING_KARMA_EXPRESSION = _("şampiyon")
+    OVERWHELMING_KARMA_EXPRESSION = _("the champion")
     """Expression for too high karma points. (decided by KARMA_BOUNDARY_UPPER)"""
 
     # Suggestions
