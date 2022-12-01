@@ -178,6 +178,12 @@ class Author(AbstractUser):
     # Other
     karma = models.DecimalField(default=Decimal(0), max_digits=7, decimal_places=2, verbose_name=_("Karma points"))
     badges = models.ManyToManyField("Badge", blank=True, verbose_name=_("Badges"))
+    # Test
+    iq_point = models.IntegerField(default=100)
+    test_score = models.IntegerField(default=0)
+    test_version = models.IntegerField(default=1)
+    test_passed = models.BooleanField(default=False)
+    test_taken = models.IntegerField(default=0)
 
     announcement_read = models.DateTimeField(auto_now_add=True)
 
