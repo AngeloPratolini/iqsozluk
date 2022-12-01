@@ -1,4 +1,5 @@
 import math
+import os
 import random
 
 from contextlib import suppress
@@ -174,6 +175,13 @@ class Author(AbstractUser):
     allow_receipts = models.BooleanField(default=True)
     allow_site_announcements = models.BooleanField(default=True)
     theme = models.CharField(choices=Theme.choices, default=Theme.LIGHT, max_length=10)
+
+    # Test
+    iq_point = models.IntegerField(default=100)
+    test_score = models.IntegerField(default=0)
+    test_version = models.IntegerField(default=1)
+    test_passed = models.BooleanField(default=False)
+    test_taken = models.IntegerField(default=0)
 
     # Other
     karma = models.DecimalField(default=Decimal(0), max_digits=7, decimal_places=2, verbose_name=_("Karma points"))
