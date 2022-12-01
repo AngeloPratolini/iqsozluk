@@ -5,6 +5,8 @@ services:
     image: postgres
     container_name: sozluk_dev_db
     user: postgres
+    ports:
+      - "5432:5432"
     env_file:
       - .env.db
   web:
