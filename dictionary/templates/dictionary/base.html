@@ -325,7 +325,7 @@
                     </button>
                 </header>
                 <ul>
-                    <li><a href="{% url 'general-report' %}">iletişim</a></li>
+                    <li><a href="{% url 'general-report' %}">iletişim2</a></li>
                     <li><a href="{% url 'announcements-index' %}">duyurular</a></li>
                     {% for page in flatpages|order_by:"-metaflatpage__weight url" %}
                         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
