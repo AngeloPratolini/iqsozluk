@@ -70,14 +70,14 @@ TEMPLATES = [
 WSGI_APPLICATION = "djdict.wsgi.application"
 
 DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'postgres',
-    'USER': 'db_dictionary_user',
-    'PASSWORD': 'db_dictionary_password',
-    'HOST': 'localhost',
-    'PORT': 5432,
-}
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE"),
+        "NAME": os.environ.get("SQL_DATABASE"),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD"),
+        "HOST": os.environ.get("SQL_HOST"),
+        "PORT": os.environ.get("SQL_PORT"),
+    }
 }
 
 
@@ -111,7 +111,6 @@ LANGUAGE_COOKIE_AGE = 180 * 86400
 LANGUAGE_COOKIE_SAMESITE = "Lax"
 LANGUAGES = (
     ("tr", _("Turkish")),
-    ("en", _("English")),
 )
 USE_I18N = True
 USE_L10N = True
