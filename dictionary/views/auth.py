@@ -8,11 +8,11 @@ from django.conf import settings as django_settings
 from django.contrib import messages as notifications
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
-from django.views.generic import CreateView, FormView, View
+from django.views.generic import CreateView, FormView, View, TemplateView, DetailView, ListView
 
 from dictionary.backends.sessions.utils import flush_all_sessions
 from dictionary.conf import settings
@@ -21,6 +21,7 @@ from dictionary.models import AccountTerminationQueue, Author, BackUp, UserVerif
 from dictionary.utils import get_theme_from_cookie, time_threshold
 from dictionary.utils.email import send_email_confirmation
 from dictionary.utils.mixins import PasswordConfirmMixin
+from dictionary.models.author import Quiz, Answer, Question, Result
 
 
 class Login(LoginView):
@@ -74,11 +75,59 @@ class SignUp(FormView):
         notifications.info(
             self.request,
             _(
-                "e-posta adresinize doğrulama linki gönderildi. bu linke tıklayarak hesabınızı"
-                "aktif hale getirebilir ve giriş yapabilirsiniz"
+                "a confirmation link has been sent to your e-mail address. by following"
+                " this link you can activate and login into your account."
             ),
         )
-        return redirect("login")
+        return redirect("quiz", id=user.id, quiz_id=1)
+
+
+def quiz(request, id, quiz_id):
+    if request.method == 'POST':
+        print(request.POST)
+        questions=Question.objects.all().filter(quiz_id=quiz_id)
+        answers=[]
+        for i in questions:
+            for y in Answer.objects.all().filter(question_id=i):
+                answers.append(y)
+        score=0
+        wrong=0
+        correct=0
+        total=0
+        for a in answers:
+            total+=1
+            print(request.POST.get(a.correct))
+            print(a.correct)
+            if a.correct == request.POST.get(a.correct):
+                score+=10
+                correct+=1
+            else:
+                wrong+=1
+        percent = score/(total*10) *100
+        author = Author.objects.get(id=id)
+        author.test_score += score
+        author.test_taken += 1
+        author.save()
+        context = {
+            'score':score,
+            'time': request.POST.get('timer'),
+            'correct':correct,
+            'wrong':wrong,
+            'percent':percent,
+            'total':total
+        }
+        return HttpResponse(f"<h1>{request.POST.get(answers[0])}</h1>")
+    else:
+        questions=Question.objects.all().filter(quiz_id=quiz_id)
+        answers = []
+        for i in questions:
+            for y in Answer.objects.all().filter(question_id=i):
+                answers.append(y)
+        context = {
+            'questions':questions,
+            'answers':answers
+        }
+        return render(request, "dictionary/testing/quiz.html", context)
 
 
 class ConfirmEmail(View):

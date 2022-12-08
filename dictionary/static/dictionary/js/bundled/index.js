@@ -876,7 +876,9 @@ const createPopper = (0, _popperLite.popperGenerator)({
     ]
 });
 function isValidText(body) {
-    return /^[A-Za-z0-9 ğçıöşüĞÇİÖŞÜ#&@()_+=':%/",.!?*~`[\]{}<>^;\\|-]+$/g.test(body.split(/[\r\n]+/).join());
+    return true
+    """return /^[A-Za-z0-9 ğçıöşüĞÇİÖŞÜ#&@()_+=
+    ':%/",.!?*~`[\]{}<>^;\\|-]+$/g.test(body.split(/[\r\n]+/).join());"""
 }
 function template(html) {
     // Create a node from string.

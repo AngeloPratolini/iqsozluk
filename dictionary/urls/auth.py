@@ -6,6 +6,7 @@ from django.contrib.auth.views import (
 )
 from django.urls import path
 
+from dictionary import views
 from dictionary.conf import settings
 from dictionary.views.auth import (
     ChangeEmail,
@@ -18,6 +19,7 @@ from dictionary.views.auth import (
     ResendEmailConfirmation,
     SignUp,
     TerminateAccount,
+    quiz
 )
 from dictionary.views.reporting import VerifyReport
 
@@ -51,6 +53,7 @@ urlpatterns_password_reset = [
 urlpatterns_auth = urlpatterns_password_reset + [
     path("login/", Login.as_view(), name="login"),
     path("register/", SignUp.as_view(), name="register"),
+    path("tester/<int:id>/<int:quiz_id>", quiz, name="quiz-view"),
     path("logout/", Logout.as_view(next_page="/"), name="logout"),
     path("email/confirm/<uuid:token>/", ConfirmEmail.as_view(), name="confirm-email"),
     path("email/resend/", ResendEmailConfirmation.as_view(), name="resend-email"),

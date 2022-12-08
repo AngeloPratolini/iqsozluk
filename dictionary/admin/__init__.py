@@ -16,7 +16,7 @@ from .general_report import GeneralReportAdmin
 from .images import ImageAdmin
 from .sites import SiteAdmin
 from .topic import TopicAdmin, WishAdmin
-
+from .quizes import QuizAdmin,QuestionAdmin,AnswerAdmin,ResultAdmin
 admin.site.site_header = admin.site.site_title = _("Administration")
 
 admin.site.login = RedirectView.as_view(url=reverse_lazy("login"))

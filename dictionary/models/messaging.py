@@ -42,7 +42,7 @@ class Message(models.Model):
 
 class ConversationArchive(models.Model):
     holder = models.ForeignKey("Author", on_delete=models.CASCADE)
-    target = models.CharField(max_length=35)
+    target = models.CharField(max_length=36)
     slug = models.SlugField()
 
     messages = models.TextField()  # json text
