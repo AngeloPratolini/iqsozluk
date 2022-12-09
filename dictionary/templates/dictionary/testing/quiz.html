@@ -21,7 +21,8 @@
   <form method='post' action=''>
     {% csrf_token %}
     {% for q  in questions%}
-    <div class="form-group">
+      <div  {%if forloop.counter != 1%} class="sakla" {%endif%} id="q{{forloop.counter}}">
+    <div class="form-group ">
       <label for="question">{{q.text}}</label>
     </div>
     <div class="form-check">
@@ -37,12 +38,14 @@
         {%endfor%}
         <br>
     </div>
+          <button onClick="next(q{{forloop.counter}}, q{{forloop.counter|add:'1'}})">Next</button>
+  </div>
     {% endfor %}
     <input id='timer' type='hidden' name="timer" value="">
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-<h1>{{}}</h1>
+
         <script>
 
             console.log('hello world')
@@ -56,6 +59,11 @@
                 timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
                 inputtag.value = t
             },1000)
+
+            function next(q1, q2) {
+	document.getElementById(q1).classList.add("sakla");
+	document.getElementById(q2).classList.remove("sakla");
+}
         </script>
 
 
