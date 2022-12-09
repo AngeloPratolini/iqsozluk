@@ -116,7 +116,7 @@ def quiz(request, id, quiz_id):
             'percent':percent,
             'total':total
         }
-        return HttpResponse(f"<h1>{request.POST.get(answers[0])}</h1>")
+        return redirect("/")
     else:
         questions=Question.objects.all().filter(quiz_id=quiz_id)
         answers = []
