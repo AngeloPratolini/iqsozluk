@@ -127,7 +127,7 @@ def quiz(request, id, quiz_id):
             'questions':questions,
             'answers':answers
         }
-        return render(request, "dictionary/testing/quiz.html", context)
+        return render(request, "dictionary/testing/quiz2.html", context)
 
 
 class ConfirmEmail(View):
