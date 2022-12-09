@@ -1,1 +1,1 @@
-{"mappings":"AAAAA,QAAQC,IAAI","sources":["dictionary/static/dictionary/js/bundled/bundle.js"],"sourcesContent":["console.log(\"parcel tamam\")"],"names":["console","log"],"version":3,"file":"bundle.js.map"}
+{"mappings":"AAAAA,QAAQC,IAAI","sources":["dictionary/static/dictionary/js/bundled/dictionary/static/dictionary/js/bundled/bundle.js"],"sourcesContent":["console.log(\"parcel tamam\")"],"names":["console","log"],"version":3,"file":"bundle.js.map"}
