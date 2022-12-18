@@ -70,15 +70,30 @@ class SignUp(FormView):
             user.is_novice = False
 
         user.save()
-        send_email_confirmation(user, user.email)
+        return redirect("quiz", id=user.id)
+
+def quiz(request, id):
+    if not request.META.get('HTTP_REFERER'):
+        return redirect("/")
+    elif request.method == 'POST':
+        score = request.POST['sendresult']
+        author = Author.objects.get(id=id)
+        author.test_score = int(score)
+        author.test_taken += 1
+        if int(score) >= 7:
+            author.test_passed = 1
+        send_email_confirmation(author, author.email)
         notifications.info(
-            self.request,
+            request,
             _(
                 "e-posta adresinize doğrulama linki gönderildi. bu linke tıklayarak hesabınızı"
                 "aktif hale getirebilir ve giriş yapabilirsiniz"
             ),
         )
-        return redirect("login")
+        author.save()
+        return redirect("/login")
+    else:
+        return render(request, "dictionary/testing/test.html")
 
 
 class ConfirmEmail(View):

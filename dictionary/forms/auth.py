@@ -78,3 +78,4 @@ class TerminateAccountForm(forms.ModelForm):
     class Meta:
         model = AccountTerminationQueue
         fields = ("state",)
+

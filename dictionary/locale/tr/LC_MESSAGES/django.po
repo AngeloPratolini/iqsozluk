@@ -613,7 +613,7 @@ msgid ""
 msgstr ""
 "giriş yapılamadı. doğru e-posta ve parola kombinasyonunu girdiğinizden emin "
 "olun. bilgileriniz büyük-küçük harf duyarlıdır. e-posta adresinizi "
-"onayladığınızdan emin olun."
+"onayladığınızdan emin olun. testi geçemediyseniz, giriş yapamazsınız."
 
 #: .\forms\auth.py:19
 msgid "remember me"

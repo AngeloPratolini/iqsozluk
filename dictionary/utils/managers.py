@@ -32,7 +32,7 @@ class TopicQueryHandler:
     # Queryset filters
     @property
     def day_filter(self):
-        return {"entries__date_created__gte": time_threshold(hours=24)}
+        return {"entries__date_created__gte": time_threshold(hours=240)}
 
     base_filter = {"entries__is_draft": False, "entries__author__is_novice": False, "is_censored": False}
 
@@ -122,7 +122,7 @@ class TopicQueryHandler:
     def acquaintances_favorites(self, user):
         return (
             Entry.objects_published.values("topic")
-            .filter(favorited_by__in=user.following.all(), entryfavorites__date_created__gte=time_threshold(hours=24))
+            .filter(favorited_by__in=user.following.all(), entryfavorites__date_created__gte=time_threshold(hours=240))
             .annotate(
                 title=Concat(F("topic__title"), Value(" (#"), F("pk"), Value(")"), output_field=CharField()),
                 slug=F("pk"),

@@ -366,7 +366,7 @@ class TopicEntryList(EntryCreateMixin, IntegratedFormMixin, ListView):
         return self.topic.entries.all()
 
     def today(self):
-        return self.topic.entries.filter(date_created__gte=time_threshold(hours=24))
+        return self.topic.entries.filter(date_created__gte=time_threshold(hours=240))
 
     def popular(self):
         return self.regular() if self.topic.is_pinned else self.today()
