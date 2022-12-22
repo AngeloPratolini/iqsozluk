@@ -6,6 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEBUG", default=0))
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(" ")
 
 GRAPHENE = {"SCHEMA": "dictionary_graph.schema.schema"}
@@ -111,6 +112,7 @@ LANGUAGE_COOKIE_AGE = 180 * 86400
 LANGUAGE_COOKIE_SAMESITE = "Lax"
 LANGUAGES = (
     ("tr", _("Turkish")),
+    ("en", _("English")),
 )
 USE_I18N = True
 USE_L10N = True
