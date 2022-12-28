@@ -137,7 +137,7 @@ function setTheme (theme) {
     const body = one("body")
     const icon = one("[data-toggle=theme]").querySelector("use")
     const entries= document.querySelectorAll(".girdi")
-    body.style.transition = "background-color .5s ease"
+    body.style.transition = "background-color 4s ease"
 
     if (theme === "dark") {
         body.classList.add("dark")

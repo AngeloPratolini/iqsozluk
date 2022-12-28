@@ -6,6 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEBUG", default=0))
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(" ")
 
 GRAPHENE = {"SCHEMA": "dictionary_graph.schema.schema"}
@@ -90,7 +91,6 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
 CELERY_EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-
 REDIS_URL = "redis://redis:6379/1"
 CELERY_BROKER_URL = REDIS_URL
 CELERY_EMAIL_TASK_CONFIG = {"default_retry_delay": 40}
@@ -105,7 +105,7 @@ CACHES = {
 }
 
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "tr"
 LANGUAGE_COOKIE_NAME = "langcode"
 LANGUAGE_COOKIE_AGE = 180 * 86400
 LANGUAGE_COOKIE_SAMESITE = "Lax"

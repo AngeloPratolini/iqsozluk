@@ -206,23 +206,23 @@ class LeftFrame {
 
             const body = one("body")
 
-            if(topic.title.slice(-1)==="?" && body.classList.value === "dark"){
-            topics += `<li class=" soruluDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+            // if(topic.title.slice(-1)==="?" && body.classList.value === "dark"){
+            // topics += `<li class=" soruluDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
 
-            }
-            else if(topic.title.slice(-1)==="?" && body.classList.value !== "dark"){
-            topics += `<li class=" sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+            // }
+            // else if(topic.title.slice(-1)==="?" && body.classList.value !== "dark"){
+            // topics += `<li class=" sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
 
-            }
-            else if(topic.title.charAt(0)==="!" && body.classList.value === "dark"){
-            topics += `<li class="unlemliDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+            // }
+            // else if(topic.title.charAt(0)==="!" && body.classList.value === "dark"){
+            // topics += `<li class="unlemliDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
 
-            }
-            else if(topic.title.charAt(0)==="!" && body.classList.value !== "dark"){
-            topics += `<li class="unlemli girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+            // }
+            // else if(topic.title.charAt(0)==="!" && body.classList.value !== "dark"){
+            // topics += `<li class="unlemli girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
 
-            }
-            else {
+            // }
+            if(true) {
             topics += `<li class="list-group-item girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
 
             }location.reload()

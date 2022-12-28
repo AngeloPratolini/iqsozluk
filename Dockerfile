@@ -1,4 +1,4 @@
-FROM python:3.8.12-alpine as builder
+FROM python:3.10.8-alpine as builder
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -12,21 +12,21 @@ RUN apk update \
     && apk add jpeg-dev zlib-dev libjpeg
 
 RUN pip install --upgrade pip
-COPY ./requirements-prod.txt .
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements-prod.txt
+COPY ./requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
 ############################
 
-FROM python:3.8.12-alpine
+FROM python:3.10.8-alpine
 
 RUN addgroup --gid 1017 django_g && adduser django -S  --disabled-password --ingroup django_g
 
 ENV APP_DIR=/usr/src/app
 WORKDIR $APP_DIR
 
-RUN apk update && apk add libpq libjpeg
+RUN apk update && apk add libpq libjpeg bash
 COPY --from=builder /usr/src/app/wheels /wheels
-COPY --from=builder /usr/src/app/requirements-prod.txt .
+COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
 
 ENV GOSU_VERSION 1.12
@@ -60,5 +60,5 @@ RUN set -eux; \
 COPY . .
 
 RUN mkdir -p media static
-
+RUN chmod +x /usr/src/app/scripts/entrypoint.sh
 ENTRYPOINT ["/usr/src/app/scripts/entrypoint.sh"]

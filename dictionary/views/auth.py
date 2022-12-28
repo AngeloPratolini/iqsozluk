@@ -80,20 +80,29 @@ def quiz(request, id):
         author = Author.objects.get(id=id)
         author.test_score = int(score)
         author.test_taken += 1
-        if int(score) >= 7:
+        if int(score) >= 8:
             author.test_passed = 1
-        send_email_confirmation(author, author.email)
-        notifications.info(
+            send_email_confirmation(author, author.email)
+            notifications.info(
             request,
             _(
-                "e-posta adresinize doğrulama linki gönderildi. bu linke tıklayarak hesabınızı"
-                "aktif hale getirebilir ve giriş yapabilirsiniz"
+                "tebrikler, testi geçtiniz. e-posta adresinize doğrulama linki gönderildi. bu linke tıklayarak hesabınızı"
+                " aktif hale getirebilir ve giriş yapabilirsiniz"
             ),
-        )
-        author.save()
-        return redirect("/login")
+            )
+            author.save()
+            return redirect("/login")
+        else:
+            notifications.info(
+                request,
+                _(
+                    "maalesef testi geçemediniz. yine de bazı başlıkları görebilirsiniz"
+                ),
+            )
+            author.save()
+            return redirect("/login")
     else:
-        return render(request, "dictionary/testing/test.html")
+            return render(request, "dictionary/testing/test.html")
 
 
 class ConfirmEmail(View):

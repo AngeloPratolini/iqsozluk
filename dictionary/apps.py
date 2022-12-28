@@ -15,15 +15,15 @@ class DictionaryConfig(AppConfig):
     # Settings
 
     DOMAIN = "iqsozluk.com"
-    PROTOCOL = "http"
-    FROM_EMAIL = "noreply@xyzsozluk.org"
+    PROTOCOL = "https"
+    FROM_EMAIL = "iqsozluk@gmail.com"
 
     # Default options for content object counts
     TOPICS_PER_PAGE_DEFAULT = 50  # For guests only
     ENTRIES_PER_PAGE_DEFAULT = 10  # For guests only
     ENTRIES_PER_PAGE_PROFILE = 15  # Global setting
 
-    GENERIC_SUPERUSER_USERNAME = "djangosozluk"
+    GENERIC_SUPERUSER_USERNAME = "iqsozluk"
     """
     Give the username of the user who does administrative actions in the site.
     """

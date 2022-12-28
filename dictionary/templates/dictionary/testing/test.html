@@ -35,6 +35,10 @@ td {
 	transform: scale(1.5);
 	margin-top: 40px;
 }
+.svgnav {
+	height: 100px;
+	width: 100px;
+}
 /* .glass {
 	position: absolute;
 	left: 45%;
@@ -173,6 +177,36 @@ td {
 }
 
 
+.testibitir{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.testibitir form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+} 
+#girisbtn1 {
+border-radius: 4px;
+padding: 10px 20px;
+background-color:white;
+border-color: none;
+border: none;
+}
+#girisbtn1:hover{
+	cursor: pointer;
+	transform: translateY(-5px);
+	box-shadow:2px 5px 5px black ;
+	transition: all 0.5s;
+}
+#girisbtn1:active{
+	cursor: pointer;
+	transform: translateY(0);
+	transition: all 0.2s;
+}
+
   </style>
   <title>IQ Test</title>
 </head>
@@ -181,9 +215,6 @@ td {
 
   <div id="ten-countdown"></div>
 
-  <!-- <div class="glass">
-    <h1>naber</h1>
-  </div> -->
   <section>
     <div class="ortala" id="giriş">
       <h1>Hoşgeldiniz.</h1>
@@ -192,13 +223,11 @@ td {
       </p>
       <button id="girisbtn">Teste Başla</button>
     </div>
-    <!-- tamamlandı -->
     <div class="regIq1 container hidden">
       <h1 id="soruLtn" class="ortala"></h1>
       <h3 id="cumleLtn" class="ortala"></h3>
       <div id="şıklarLtn" class="yazılıSik"></div>
     </div>
-    <!-- tamamlandı -->
     <div class="regIq2 container hidden  ">
       <h1 id="tkSyisoru" class="yazılıSik"></h1>
       <div class="tablo">
@@ -230,7 +259,6 @@ td {
 
       </div>
     </div>
-    <!-- tamamlandı -->
     <div class="regIq3 container hidden ">
       <div id="birler" class="ortala"></div>
       <div id="birler-siklar" class="şıklarClass"></div>
@@ -302,13 +330,14 @@ td {
     <h1 id="sonucum"></h1>
   </div>
 
-
-<form method='post' action=''>
-  {% csrf_token %}
-  <input type="text" id="sendresult" name="sendresult">
-  <input type="submit" value="Testi Bitir">
-</form>
-
+<div id="testibitir" class="testibitir hidden">
+    <form method='post' action=''>
+		{% csrf_token %}
+      <p>Lütfen Testi Bitir Butonuna tıklayınız.</p>
+      <input type="text" id="sendresult" name="sendresult" class="hidden">
+      <input type="submit" value="Testi Bitir" id="girisbtn1">
+    </form>
+  </div>
 
 
 <script>
@@ -321,12 +350,11 @@ function next(yanit, sakla, goster) {
 	document.querySelector(sakla).classList.add("hidden");
 	document.querySelector(goster).classList.remove("hidden");
 }
-function timeUp() {
-	document.querySelectorAll;
-}
+
+
 function result() {
-	let dogruNum = 0;
-	let yanlisNum = 0;
+	var dogruNum = 0;
+	var yanlisNum = 0;
 	for (let i = 0; i < 12; i++) {
 		if (yanitList[i] === yanitlar[i]) {
 			dogruNum++;
@@ -334,9 +362,28 @@ function result() {
 			yanlisNum++;
 		}
 	}
-	document.getElementById("sonucum").innerText = `Doğru sayınız ${dogruNum}`;
 	document.getElementById("sendresult").value = `${dogruNum}`;
-}
+
+	if (dogruNum > 8) {
+		document.getElementById(
+			"sonucum",
+		).innerText = `Aramıza hoşgeldiniz. Siteye yönlendiriliyorsunuz. `;
+		setTimeout(() => {
+			console.log("test bitti");
+		}, 5000);
+	} else {
+		document.getElementById(
+			"sonucum",
+		).innerText = `Bize katılmanı çok isteriz ama sen sıkılırsın burda. biz seni daha rahat edeceğin bir yere gönderelim.`;
+		setTimeout(() => {
+			window.location.href = "https://eksisozluk.com/";
+		}, 5000);
+	}
+
+
+	// sendData(dogruNum);
+
+}                                     
 
 function switchKeys(key) {
 	switch (key) {
@@ -401,11 +448,11 @@ document.getElementById("girisbtn").addEventListener("click", () => {
 const latin = {
 	soru: "Boşluğa hangi kelime gelmelidir?",
 	metinler: [
-		"Roma tibi subito motibus ibit amor.\n Signa te , signa , temere me tangis et angis.\n Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur ____ ?",
-		"Roma tibi subito motibus ibit amor.\n Signa te, signa, temere me tangis et angis.\n Subi dura a rudibus.\n  Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur igni.\n Sole medere, pede ede perede ____?",
-		"Signa te, signa, temere me tangis et angis.\n Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur igni.\n Roma tibi subito motibus ibit ___?",
-		"Roma tibi subito motibus ibit amor.\n  Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur igni.\n Si bene te tua laus taxat, sua laute _____? ",
-		"Roma tibi subito motibus ibit amor.\n Signa te, signa, temere me tangis et angis.\n Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n In girum imus nocte et consumimur igni.\n Lorem ipsum dolor sit, tisro lodmus pime ___?",
+		"Roma tibi subito motibus ibit amor.\n Signa te , signa , temere me tangis et angis.\n Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur __ ?",
+		"Roma tibi subito motibus ibit amor.\n Signa te, signa, temere me tangis et angis.\n Subi dura a rudibus.\n  Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur igni.\n Sole medere, pede ede perede __?",
+		"Signa te, signa, temere me tangis et angis.\n Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur igni.\n Roma tibi subito motibus ibit _?",
+		"Roma tibi subito motibus ibit amor.\n  Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n Si bene te tua laus taxat, sua laute tenebis.\n In girum imus nocte et consumimur igni.\n Si bene te tua laus taxat, sua laute ___? ",
+		"Roma tibi subito motibus ibit amor.\n Signa te, signa, temere me tangis et angis.\n Sole medere, pede ede perede melos.\n Subi dura a rudibus.\n In girum imus nocte et consumimur igni.\n Lorem ipsum dolor sit, tisro lodmus pime _?",
 	],
 	yanitlar: {
 		0: ["igni", "aqua", "podex", "terra", "aura"],
@@ -545,11 +592,11 @@ tekSayi.ayarlaTkSayi();
 
 const birler = {
 	sorular: [
-		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "91 + 92 = ?"], //48
-		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "81 + 92 = ?"], //47
-		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "71 + 92 = ?"], //46
-		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "61 + 92 = ?"], //45
-		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "51 + 92 = ?"], //44
+		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "91 + 92 = ?"],
+		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "81 + 92 = ?"],
+		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "71 + 92 = ?"],
+		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "61 + 92 = ?"],
+		["21 + 18 = 93", "46 + 32 = 87", "95 + 81 = 77", "51 + 92 = ?"],
 	],
 	yanitlar: {
 		0: ["48", "92", "123", "49", "60"],
@@ -603,11 +650,11 @@ const ekskhrf = {
 		"A-B-C-Ç-D-F-G-Ğ-H-I-J-K-L-M-N-O-Ö-R-Ş-U-Ü-V-Y-Z",
 	],
 	yanitlar: {
-		0: ["tevkif", "tertip", "tenkit", "terkip", "tesbih"], //tevkif
-		1: ["tevkif", "tebrik", "tenkit", "terkip", "tesbih"], //tebrik
-		2: ["tebrik", "tevkif", "tertip", "tenkit", "terkip"], //tertip
-		3: ["tebrik", "tevkif", "tertip", "tenkit", "tesbih"], //tenkit
-		4: ["tebrik", "tevkif", "tertip", "türkan", "tespit"], //tespit
+		0: ["tevkif", "tertip", "tenkit", "terkip", "tesbih"],
+		1: ["tevkif", "tebrik", "tenkit", "terkip", "tesbih"],
+		2: ["tebrik", "tevkif", "tertip", "tenkit", "terkip"],
+		3: ["tebrik", "tevkif", "tertip", "tenkit", "tesbih"],
+		4: ["tebrik", "tevkif", "tertip", "türkan", "tespit"],
 	},
 	eksikHarf: function () {
 		const randomEksk = Math.floor(Math.random() * 5);
@@ -638,11 +685,11 @@ ekskhrf.eksikHarf();
 
 const alti = {
 	sorular: [
-		["1 5 9 6 = 3", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "7 4 6 7 = ?"], //0
-		["1 5 9 6 = 3", "5 7 0 9 = 3", "1 2 9 4 = 4", "6 7 4 3 = 2", "7 4 6 2 = ?"], //1
-		["1 2 9 6 = 0", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "7 5 6 8 = ?"], //2
-		["1 5 9 6 = 3", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "7 3 3 9 = ?"], //4
-		["1 5 9 6 = 3", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "8 3 5 7 = ?"], //5
+		["1 5 9 6 = 3", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "7 4 6 7 = ?"],
+		["1 5 9 6 = 3", "5 7 0 9 = 3", "1 2 9 4 = 4", "6 7 4 3 = 2", "7 4 6 2 = ?"],
+		["1 2 9 6 = 0", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "7 5 6 8 = ?"],
+		["1 5 9 6 = 3", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "7 3 3 9 = ?"],
+		["1 5 9 6 = 3", "5 7 8 9 = 5", "1 2 3 4 = 4", "6 7 4 2 = 1", "8 3 5 7 = ?"],
 	],
 	yanitlar: ["0", "1", "2", "4", "5"],
 	ayarlaAlti: function () {
@@ -684,11 +731,11 @@ alti.ayarlaAlti();
 
 const sayiDz = {
 	sorular: [
-		"2, 5, 12, 27, ?", //58
-		"3, 7, 16, 35, ?", //74
-		"4, 9, 20, 43, ?", //90
-		"5, 11, 24, 51, ?", //106
-		"6, 13, 28, 59, ?", //122
+		"2, 5, 12, 27, ?",
+		"3, 7, 16, 35, ?",
+		"4, 9, 20, 43, ?",
+		"5, 11, 24, 51, ?",
+		"6, 13, 28, 59, ?",
 	],
 	yanitlar: ["58", "74", "90", "106", "122"],
 	ayarlaSayiDz: function () {
@@ -719,9 +766,7 @@ const sayiDz = {
 sayiDz.ayarlaSayiDz();
 
 const hrfDz = {
-	sorular: [
-		"P-S-?-P-C-C-P", //Ç
-	],
+	sorular: ["P-S-?-P-C-C-P"],
 	yanitlar: ["B", "Ç", "L", "R", "T"],
 	ayarlaHrfDz: function () {
 		switchKeys(1);
@@ -789,11 +834,11 @@ hngFrk.ayarlaHngFrk();
 
 const xyz = {
 	soru: [
-		[` X = 2Y \n Z - X = Y \n Z = Y * ? `], //3
-		[` X = 3 Y \n Z - X = Y \n Z = Y * ? `], //4
-		[` X = 4 Y \n Z - X = Y \n Z = Y * ? `], //5
-		[` X = 5 Y \n Z - X = Y \n Z = Y * ? `], //6
-		[` X = 6 Y \n Z - X = Y \n Z = Y * ? `], //7
+		[` X = 2Y \n Z - X = Y \n Z = Y * ? `],
+		[` X = 3 Y \n Z - X = Y \n Z = Y * ? `],
+		[` X = 4 Y \n Z - X = Y \n Z = Y * ? `],
+		[` X = 5 Y \n Z - X = Y \n Z = Y * ? `],
+		[` X = 6 Y \n Z - X = Y \n Z = Y * ? `],
 	],
 	yanitlar: ["3", "4", "5", "6", "7"],
 	ayarlaxyz: function () {
@@ -851,7 +896,7 @@ const english = {
 		const cumleContainer = document.getElementById("cumleEng");
 		cumleContainer.insertAdjacentHTML("afterbegin", eklenecekCümle);
 
-		const eklenecekSiklarEng = `
+		const eklenecekSiklarEng = `    
     <h6 class="english" id="english sik" name="a">${this.yanitlar[randomEng][0]}</h6>
     <h6 class="english" id="english sik" name="b">${this.yanitlar[randomEng][1]}</h6>
     <h6 class="english" id="english sik" name="c">${this.yanitlar[randomEng][2]}</h6>
@@ -917,7 +962,7 @@ const turkish = {
 		document.getElementById("soruTr").innerText = turkish.soru;
 		const randomTr = Math.floor(Math.random() * 5);
 		switchKeys(randomTr);
-		const eklenecekSiklarTr = `
+		const eklenecekSiklarTr = `    
 <h6 class="turkish" id="turkish sik" name="a">${turkish.yanitlar[randomTr][0]}</h6>
 <h6 class="turkish" id="turkish sik" name="b">${turkish.yanitlar[randomTr][1]}</h6>
 <h6 class="turkish" id="turkish sik" name="c">${turkish.yanitlar[randomTr][2]}</h6>
@@ -962,7 +1007,7 @@ const math = {
 		const randomMath = Math.floor(Math.random() * 5);
 		switchKeys(randomMath);
 		document.getElementById("cumleMath").innerHTML = math.cümleler[randomMath];
-		const eklenecekSiklarMath = `
+		const eklenecekSiklarMath = `    
 <h6 class="şıklarMath" id="math sik" name="a">${math.yanitlar[0]}</h6>
 <h6 class="şıklarMath" id="math sik" name="b">${math.yanitlar[1]}</h6>
 <h6 class="şıklarMath" id="math sik" name="c">${math.yanitlar[2]}</h6>
@@ -977,9 +1022,9 @@ const math = {
 		mathAnswers.forEach((answer) =>
 			answer.addEventListener("click", (e) => {
 				yanitdeger = e.target.attributes.name.value;
-				next(yanitdeger, ".math-questions", ".sonuc");
-
+				next(yanitdeger, ".math-questions", ".testibitir");
 				result();
+				document.getElementById("girisbtn1").classList.remove("hidden");
 			}),
 		);
 	},
