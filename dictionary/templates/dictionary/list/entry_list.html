@@ -273,7 +273,15 @@
                             {% blocktrans asvar text_placeholder with title=topic.title %}express your thoughts on {{ title }}..{% endblocktrans %}
                         {% endautoescape %}
                         {% trans "Entry content area" as area_label %}
-                        {% render_field form.content placeholder=text_placeholder id="user_content_edit" class="entry_editor form-control allowsave expandable" rows="5" spellcheck="true" aria-label=area_label %}
+
+                        {% if topic.title.0 == "!" %}
+                        {% render_field form.content placeholder="ünlemle başlayan başlıklar formatsız başlıklardır. İnsan Hakları Evrensel Beyannamesi’ni gözetmek ve Türkiye Cumhuriyeti yasalarına uymak dışında bir kural yoktur." id="user_content_edit" class="entry_editor form-control allowsave" rows="10" spellcheck="true" aria-label=area_label %}
+                        {% elif topic.title|slice:"-1:" == "?" %}
+                        {% render_field form.content placeholder="soru işaretiyle biten başlıklar soran başlıklardır. kurallar için (bkz. soran başlık)" id="user_content_edit" class="entry_editor form-control allowsave" rows="10" spellcheck="true" aria-label=area_label %}
+                        {%else%}
+                        {% render_field form.content placeholder=text_placeholder id="user_content_edit" class="entry_editor form-control allowsave" rows="10" spellcheck="true" aria-label=area_label %}
+                        {%endif%}
+
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
                                 <button type="button" class="btn draft-async px-0" data-title="{{ topic.title }}">{% trans "keep this as draft" %}</button>
