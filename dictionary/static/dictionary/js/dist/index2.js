@@ -876,7 +876,7 @@
       ]
   });
   function isValidText(body) {
-      return /^[A-Za-z0-9 âîğçıöşüĞÇİÖŞÜ#&@()_+=':%/",.!?*~`[\]{}<>^;\\|-]+$/g.test(body.split(/[\r\n]+/).join());
+      return /^[A-Za-z0-9 	éâîğçıöşüĞÇİÖŞÜ#&@()_+=':%/",.!?*~`[\]{}<>^;\\|-]+$/g.test(body.split(/[\r\n]+/).join());
   }
   function template(html) {
       // Create a node from string.

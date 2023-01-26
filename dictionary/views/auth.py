@@ -80,6 +80,7 @@ def quiz(request, id):
         author = Author.objects.get(id=id)
         author.test_score = int(score)
         author.test_taken += 1
+        author.save()
         if int(score) >= 8:
             author.test_passed = 1
             send_email_confirmation(author, author.email)

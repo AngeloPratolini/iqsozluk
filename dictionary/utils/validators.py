@@ -7,15 +7,15 @@ from uuslug import slugify
 from dictionary.conf import settings
 
 
-user_text_re = _lazy_re_compile(r"^[A-Za-z0-9 ÂâîğçıöşüĞÇİÖŞÜ#&@()_+=':%/\",.!?*~`\[\]{}<>^;\\|-]+$")
-topic_title_re = _lazy_re_compile(r"^[a-z0-9 Ââîğçıöşü&#()_+='%/\",.!?~\[\]{}<>^;\\|-]+$")
+user_text_re = _lazy_re_compile(r"^[A-Za-z0-9 	éÂâîğçıöşüĞÇİÖŞÜ#&@()_+=':%/\",.!?*~`\[\]{}<>^;\\|-]+$")
+topic_title_re = _lazy_re_compile(r"^[a-z0-9 	éÂâîğçıöşü&#()_+='%/\",.!?~\[\]{}<>^;\\|-]+$")
 
 
 def validate_topic_title(value, exctype=ValidationError):
     if not slugify(value):
         raise exctype(_("that title is just too nasty."))
 
-    if len(value) > 50:
+    if len(value) > 79:
         raise exctype(_("this title is too long"))
 
     if topic_title_re.fullmatch(value) is None:

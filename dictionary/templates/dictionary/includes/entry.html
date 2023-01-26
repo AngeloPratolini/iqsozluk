@@ -52,13 +52,13 @@
 
                 {% if user != entry.author %}
                     <div class="votes entry-vote">
-                        <a role="button" tabindex="0" title="güzel!" class="vote upvote{{ entry.is_upvoted|yesno:" active," }}">
+                        <a role="button" tabindex="0" title="haklı!" class="vote upvote{{ entry.is_upvoted|yesno:" active," }}">
                             <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#up"></use>
                             </svg>
                         </a>
 
-                        <a role="button" tabindex="0" title="fena" class="vote downvote{{ entry.is_downvoted|yesno:" active," }}">
+                        <a role="button" tabindex="0" title="haksız" class="vote downvote{{ entry.is_downvoted|yesno:" active," }}">
                             <svg width="25" height="13" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#down"></use>
                             </svg>
@@ -108,13 +108,13 @@
             {% for comment in comments %}
                 <div class="comment d-flex align-items-center" id="comment-{{ comment.pk }}">
                     <aside class="votes comment-vote d-flex flex-column align-items-center px-3" data-id="{{ comment.pk }}">
-                        <a class="vote upvote{{ comment.is_upvoted|yesno:" active," }}" role="button" tabindex="0" title="güzel!">
+                        <a class="vote upvote{{ comment.is_upvoted|yesno:" active," }}" role="button" tabindex="0" title="haklı!">
                             <svg width="25" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#up"></use>
                             </svg>
                         </a>
                         <strong class="rating">{{ comment.rating }}</strong>
-                        <a class="vote downvote{{ comment.is_downvoted|yesno:" active," }}" role="button" tabindex="0" title="fena">
+                        <a class="vote downvote{{ comment.is_downvoted|yesno:" active," }}" role="button" tabindex="0" title="haksız">
                             <svg width="25" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#down"></use>
                             </svg>

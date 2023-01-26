@@ -15,7 +15,7 @@ from dictionary.utils.validators import validate_topic_title, validate_user_text
 
 class Topic(models.Model):
     title = models.CharField(
-        max_length=50,
+        max_length=80,
         unique=True,
         db_index=True,
         validators=[validate_topic_title],
@@ -26,7 +26,7 @@ class Topic(models.Model):
         ),
     )
 
-    slug = models.SlugField(max_length=96, unique=True, editable=False)
+    slug = models.SlugField(max_length=120, unique=True, editable=False)
 
     created_by = models.ForeignKey(
         Author,

@@ -34,7 +34,7 @@ class DictionaryConfig(AppConfig):
     This anonymous user is used to hold the entries of deleted accounts.
     """
 
-    DISABLE_NOVICE_QUEUE = False
+    DISABLE_NOVICE_QUEUE = True
     """
     When set to True, users registered via 'registration form' will be authors
     immediately, skipping the necessity of writing 10 entries and waiting for
@@ -114,7 +114,7 @@ class DictionaryConfig(AppConfig):
     These categories have tabs. Make sure you configure metadata correctly.
     """
 
-    USER_EXCLUSIVE_CATEGORIES = ("today", "drafts", "acquaintances", "wishes", "followups")
+    USER_EXCLUSIVE_CATEGORIES = ("drafts", "acquaintances", "wishes", "followups")
     """
     Cache (if enabled) these categories PER USER (The list of objects in those
     categories varies on authenticated user).
@@ -136,7 +136,7 @@ class DictionaryConfig(AppConfig):
     want anything to be excluded by default, leave it blank: []
     """
 
-    DEFAULT_CATEGORY = "popular"
+    DEFAULT_CATEGORY = "today"
     """
     Default category to be shown when the user requests for the first time.
     Should NOT be in LOGIN_REQUIRED_CATEGORIES.

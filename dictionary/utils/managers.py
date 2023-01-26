@@ -43,19 +43,25 @@ class TopicQueryHandler:
     values = ("title", "slug")
 
     def today(self, user):
-        categories = Q(category__in=user.following_categories.all())
-
-        if user.allow_uncategorized:
-            categories |= Q(category=None)
-
-        return (
-            Topic.objects.values(*self.values)
-            .filter(**self.base_filter, **self.day_filter)
-            .filter(categories)
-            .exclude(created_by__in=user.blocked.all())
-            .annotate(**self.latest, count=Count("entries", distinct=True))
-            .order_by("-latest")
-        )
+        if user.is_authenticated:
+            categories = Q(category__in=user.following_categories.all())
+            if user.allow_uncategorized:
+                categories |= Q(category=None)
+            return (
+                Topic.objects.values(*self.values)
+                    .filter(**self.base_filter, **self.day_filter)
+                    .filter(categories)
+                    .exclude(created_by__in=user.blocked.all())
+                    .annotate(**self.latest, count=Count("entries", distinct=True))
+                    .order_by("-latest")
+            )
+        else:
+            return (
+                Topic.objects.values(*self.values)
+                .filter(**self.base_filter, **self.day_filter)
+                .annotate(**self.latest, count=Count("entries", distinct=True))
+                .order_by("-latest")
+            )
 
     def today_in_history(self, year):
         now = timezone.now()
