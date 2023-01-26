@@ -1,4 +1,5 @@
 ﻿## django-sozluk, ekşi sözlük clone powered by Python
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6c2a34dfbd184f139cd32f8f622d4002)](https://www.codacy.com/manual/realsuayip/django-sozluk?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=realsuayip/django-sozluk&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
 
 Demo website is now available at [sozluk.me](https://sozluk.me/) \
@@ -17,7 +18,7 @@ Telegram (I use the same username there) or, better yet, [create an issue](https
 Check out "todo" keyword in the project files or Github issues to see the to-do's.
 
 Check out [screenshots](screenshots) folder to see current front-end in action with both the desktop and mobile views.
-
+   
 ### Quick installation
 
 Make sure you have latest versions of Python and Docker installed in your system. Clone
@@ -29,7 +30,7 @@ This will build and start development server for the project. Keep in mind that
 in development mode, the emails will output into console (container logs).
 
 Running in development mode will also create a superuser with email `test@django.org` and password
-`test`. In order for your entries to appear, you need to make yourself an actual author i.e.,
+`test`. In order for your entries to appear, you need to make yourself an actual author i.e., 
 remove yourself from novice status using admin user edit page.
 
 The website uses cache mechanism frequently, so you may be inclined to disable
@@ -55,7 +56,7 @@ You are most likely to create an admin account after these processes:
     docker-compose exec web python manage.py createsuperuser
 
 If you intend to use this configuration for production, make sure you have
-edited all the `.env` files, Django settings file (`settings_prod.py`) and
+edited all the `.env` files, Django settings file (`settings_prod.py`) and 
 dictionary settings file (`dictionary/apps.py`) with proper credentials.
 Make sure you change the passwords of users that are generated
 through `setup.sh` script.

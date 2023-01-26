@@ -36,10 +36,6 @@ class GeneralReportView(CreateView):
 
         # User is already logged in, no verification required.
         if self.request.user.is_authenticated:
-            body = f"{instance.reporter_email} mail adresinden gelen bir mesaj var \n konu: {instance.subject} \n mesaj:{instance.content}"
-            email = EmailMessage(_("yeni iletişim formu mesajı"), body, settings.FROM_EMAIL, [settings.FROM_EMAIL])
-            email.content_subtype = "html"
-            email.send()
             notifications.success(
                 self.request, _("your report request has been successfully sent."), extra_tags="persistent"
             )
@@ -117,10 +113,6 @@ class VerifyReport(View):
             notifications.success(
                 self.request, _("your report request was successfully sent."), extra_tags="persistent"
             )
-            body = f"{report.reporter_email} mail adresinden gelen bir mesaj var \n konu: {report.subject} \n mesaj:{report.content}"
-            email = EmailMessage(_("yeni iletişim formu mesajı"), body, settings.FROM_EMAIL, [settings.FROM_EMAIL])
-            email.content_subtype = "html"
-            email.send()
         else:
             notifications.error(
                 self.request,

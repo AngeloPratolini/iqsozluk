@@ -11,7 +11,7 @@ const createPopper = popperGenerator({
 })
 
 function isValidText (body) {
-    return /^[A-Za-z0-9 ÂâîğçıöşüĞÇİÖŞÜ#&@()_+=':%/",.!?*~`[\]{}<>^;\\|-]+$/g.test(body.split(/[\r\n]+/).join())
+    return /^[A-Za-z0-9 ğçıöşüĞÇİÖŞÜ#&@()_+=':%/",.!?*~`[\]{}<>^;\\|-]+$/g.test(body.split(/[\r\n]+/).join())
 }
 
 function template (html) {

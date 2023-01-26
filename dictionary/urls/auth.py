@@ -18,7 +18,6 @@ from dictionary.views.auth import (
     ResendEmailConfirmation,
     SignUp,
     TerminateAccount,
-    quiz
 )
 from dictionary.views.reporting import VerifyReport
 
@@ -53,7 +52,6 @@ urlpatterns_auth = urlpatterns_password_reset + [
     path("login/", Login.as_view(), name="login"),
     path("register/", SignUp.as_view(), name="register"),
     path("logout/", Logout.as_view(next_page="/"), name="logout"),
-    path("tester/<int:id>", quiz, name="quiz"),
     path("email/confirm/<uuid:token>/", ConfirmEmail.as_view(), name="confirm-email"),
     path("email/resend/", ResendEmailConfirmation.as_view(), name="resend-email"),
     path("settings/password/", ChangePassword.as_view(), name="user_preferences_password"),

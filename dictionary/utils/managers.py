@@ -32,7 +32,7 @@ class TopicQueryHandler:
     # Queryset filters
     @property
     def day_filter(self):
-        return {"entries__date_created__gte": time_threshold(hours=240)}
+        return {"entries__date_created__gte": time_threshold(hours=480)}
 
     base_filter = {"entries__is_draft": False, "entries__author__is_novice": False, "is_censored": False}
 
@@ -55,6 +55,35 @@ class TopicQueryHandler:
             .exclude(created_by__in=user.blocked.all())
             .annotate(**self.latest, count=Count("entries", distinct=True))
             .order_by("-latest")
+        )
+
+    def soran(self,*args):
+        return (
+            Topic.objects.values(*self.values)
+                .filter(**self.base_filter, **self.day_filter)
+                .filter(Q(title__endswith="?"))
+                .annotate(**self.latest, count=Count("entries", distinct=True))
+                .order_by("-latest")
+        )
+
+    def normal(self,*args):
+        return (
+            Topic.objects.values(*self.values)
+                .filter(**self.base_filter, **self.day_filter)
+                .filter(Q(date_created__gte=time_threshold(hours=24)))
+                .exclude(topic__endswith="?")
+                .exclude(topic__startswith="!")
+                .annotate(**self.latest, count=Count("entries", distinct=True))
+                .order_by("-latest")
+        )
+
+    def hayta(self,*args):
+        return (
+            Topic.objects.values(*self.values)
+                .filter(**self.base_filter, **self.day_filter)
+                .filter(Q(topic__startswith="!"))
+                .annotate(**self.latest, count=Count("entries", distinct=True))
+                .order_by("-latest")
         )
 
     def today_in_history(self, year):
@@ -122,7 +151,7 @@ class TopicQueryHandler:
     def acquaintances_favorites(self, user):
         return (
             Entry.objects_published.values("topic")
-            .filter(favorited_by__in=user.following.all(), entryfavorites__date_created__gte=time_threshold(hours=240))
+            .filter(favorited_by__in=user.following.all(), entryfavorites__date_created__gte=time_threshold(hours=24))
             .annotate(
                 title=Concat(F("topic__title"), Value(" (#"), F("pk"), Value(")"), output_field=CharField()),
                 slug=F("pk"),
@@ -418,7 +447,7 @@ class TopicListHandler:
 
         # Arguments to be passed for TopicQueryHandler methods.
         arg_map = {
-            **dict.fromkeys(("today", "drafts", "followups"), [self.user]),
+            **dict.fromkeys(("today", "drafts","soran","normal","hayta", "followups"), [self.user]),
             **dict.fromkeys(("acquaintances", "wishes"), [self.user, self.tab]),
             "today_in_history": [self.year],
             "generic_category": [self.extra.get("generic_category")],

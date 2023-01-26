@@ -42,14 +42,14 @@ class Login(LoginView):
                 self.request, _("welcome back. your account has been reactivated."), extra_tags="persistent"
             )
 
-        notifications.info(self.request, _("başarı ile giriş yaptınız"))
+        notifications.info(self.request, _("successfully logged in, dear"))
         return super().form_valid(form)
 
 
 class Logout(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            notifications.info(request, _("fevkalade bir çıkış yaptınız"))
+            notifications.info(request, _("successfully logged out, dear"))
         return super().dispatch(request)
 
 
@@ -70,39 +70,15 @@ class SignUp(FormView):
             user.is_novice = False
 
         user.save()
-        return redirect("quiz", id=user.id)
-
-def quiz(request, id):
-    if not request.META.get('HTTP_REFERER'):
-        return redirect("/")
-    elif request.method == 'POST':
-        score = request.POST['sendresult']
-        author = Author.objects.get(id=id)
-        author.test_score = int(score)
-        author.test_taken += 1
-        if int(score) >= 8:
-            author.test_passed = 1
-            send_email_confirmation(author, author.email)
-            notifications.info(
-            request,
+        send_email_confirmation(user, user.email)
+        notifications.info(
+            self.request,
             _(
-                "tebrikler, testi geçtiniz. e-posta adresinize doğrulama linki gönderildi. bu linke tıklayarak hesabınızı"
-                " aktif hale getirebilir ve giriş yapabilirsiniz"
+                "a confirmation link has been sent to your e-mail address. by following"
+                " this link you can activate and login into your account."
             ),
-            )
-            author.save()
-            return redirect("/login")
-        else:
-            notifications.info(
-                request,
-                _(
-                    "maalesef testi geçemediniz. yine de bazı başlıkları görebilirsiniz"
-                ),
-            )
-            author.save()
-            return redirect("/login")
-    else:
-            return render(request, "dictionary/testing/test.html")
+        )
+        return redirect("login")
 
 
 class ConfirmEmail(View):
@@ -146,8 +122,8 @@ class ResendEmailConfirmation(FormView):
         notifications.info(
             self.request,
             _(
-                "e-posta adresinize doğrulama linki gönderildi. bu linke tıklayarak hesabınızı"
-                "aktif hale getirebilir ve giriş yapabilirsiniz"
+                "a confirmation link has been sent to your e-mail address. by following"
+                " this link you can activate and login into your account."
             ),
         )
         return redirect("login")
@@ -159,19 +135,19 @@ class ChangePassword(LoginRequiredMixin, PasswordChangeView):
 
     def form_valid(self, form):
         message = _(
-            "sayın %(username)s, şifreniz değiştiridi. bunu siz yaptıysanız,"
-            " endişeye mahal yok. eğer bu işlemden haberiniz yoksa e-posta "
-            " adresinizi kullanarak hesabınızı kurtarabilirsiniz."
+            "dear %(username)s, your password was changed. If you aware of this"
+            " action, there is nothing to worry about. If you didn't do such"
+            " action, you can use your e-mail to recover your account."
         ) % {"username": self.request.user.username}
 
         # Send a 'your password has been changed' message to ensure security.
         try:
-            self.request.user.email_user(_("şifreniz değiştirildi."), message, settings.FROM_EMAIL)
+            self.request.user.email_user(_("your password has been changed."), message, settings.FROM_EMAIL)
         except SMTPException:
-            notifications.error(self.request, _("işlem başarısız, lütfen daha sonra tekrar deneyin."))
+            notifications.error(self.request, _("we couldn't handle your request. try again later."))
             return super().form_invalid(form)
 
-        notifications.info(self.request, _("şifreniz değiştirildi."))
+        notifications.info(self.request, _("your password has been changed."))
         return super().form_valid(form)
 
 
@@ -183,7 +159,7 @@ class ChangeEmail(LoginRequiredMixin, PasswordConfirmMixin, FormView):
     def form_valid(self, form):
         send_email_confirmation(self.request.user, form.cleaned_data.get("email1"))
         notifications.info(
-            self.request, _("bu doğrulamadan sonra e-posta adresiniz değiştirilecek."), extra_tags="persistent"
+            self.request, _("your e-mail will be changed after the confirmation."), extra_tags="persistent"
         )
         return redirect(self.success_url)
 
@@ -195,18 +171,18 @@ class TerminateAccount(LoginRequiredMixin, PasswordConfirmMixin, FormView):
 
     def form_valid(self, form):
         message = _(
-            "sayın %(username)s, hesabınız donduruldu. eğer hesabınızı silmek istediyseniz"
-            ", hesabınız 5 gün içerisinde kalıcı olarak yok edilecektir."
-            " bu süreden önce siteye giriş yapmanız halinde, hesabınız tekrar aktif hale"
-            "getirilecektir. eğer yalnızca hesabınızı dondurmak istediyseniz -bunu neden yaptığınızı"
-            "çok merak etmekle beraber-  dilediğiniz zaman giriş yaparak hesabınızı aktif hale getirebilirsiniz."
+            "dear %(username)s, your account is now frozen. if you have chosen"
+            " to delete your account, it will be deleted permanently after 5 days."
+            " in case you log in before this time passes, your account will be"
+            " reactivated. if you only chose to freeze your account, you may"
+            " log in any time to reactivate your account."
         ) % {"username": self.request.user.username}
 
         # Send a message to ensure security.
         try:
-            self.request.user.email_user(_("hesabınız donduruldu"), message, settings.FROM_EMAIL)
+            self.request.user.email_user(_("your account is now frozen"), message, settings.FROM_EMAIL)
         except SMTPException:
-            notifications.error(self.request, _("işlem başarısız, lütfen daha sonra tekrar deneyin.we couldn't handle your request. try again later."))
+            notifications.error(self.request, _("we couldn't handle your request. try again later."))
             return super().form_invalid(form)
 
         termination_choice = form.cleaned_data.get("state")

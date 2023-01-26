@@ -29,21 +29,21 @@
                 <div class="upper">
                 <div class="topic-title">
                     <h1 class="d-inline m-0"><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></h1>
-                    {% if mode == "search" %}<small>[anahtar kelimelerde ara: <strong>{{ request.GET.keywords.strip }}</strong>]</small>
-                    {% elif mode == "links" %}<small><strong>[linkler]</strong></small>
-                    {% elif mode == "history" %}<small><strong>[tarihte bugün:] </strong>{{ request.GET.year.strip }}]</small>
-                    {% elif mode == "novices" %}<small><strong>[adaylar]</strong></small>
-                    {% elif mode == "following" %}<small><strong>[olan biten]</strong></small>
-                    {% elif mode == "recent" %}<small><strong>[son]</strong></small>
-                    {% elif mode == "acquaintances" %}<small><strong>[takip]</strong></small>
-                    {% elif mode == "answered" %}<small><strong>[yanıtlanmış:]</strong></small>
-                    {% elif mode == "images" %}<small><strong>[görseller]</strong></small>{% endif %}
+                    {% if mode == "search" %}<small>[{% trans "search keywords" %}: <strong>{{ request.GET.keywords.strip }}</strong>]</small>
+                    {% elif mode == "links" %}<small><strong>[{% trans "links" %}]</strong></small>
+                    {% elif mode == "history" %}<small><strong>[{% trans "today in history" %}: </strong>{{ request.GET.year.strip }}]</small>
+                    {% elif mode == "novices" %}<small><strong>[{% trans "novices" %}]</strong></small>
+                    {% elif mode == "following" %}<small><strong>[{% trans "activity" %}]</strong></small>
+                    {% elif mode == "recent" %}<small><strong>[{% trans "followups" %}]</strong></small>
+                    {% elif mode == "acquaintances" %}<small><strong>[{% trans "acquaintances" %}]</strong></small>
+                    {% elif mode == "answered" %}<small><strong>[{% trans "with replies" %}]</strong></small>
+                    {% elif mode == "images" %}<small><strong>[{% trans "images" %}]</strong></small>{% endif %}
                 </div>
 
                     {% if topic.is_pinned %}
                         <svg style="transform: scaleX(-1);" fill="currentColor" width="16" height="25" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                             <use href="#pin"></use>
-                            <title>bu başlık sabitlenmiş</title>
+                            <title>{% trans "This topic is pinned" %}</title>
                         </svg>
                     {% endif %}
                 </div>
@@ -51,7 +51,7 @@
             {% with mirrors=topic.mirrors.all %}
                 {% if mirrors %}
                     <div class="mirror-list border bg-light rounded p-3 mb-3">
-                     <span>aynı isimdeki diğer başlıklar:</span>
+                     <span>{% trans "topics with the same title:" %}</span>
                         <ul class="pl-3 mb-0 list-unstyled">
                             {% for mirror in mirrors %}
                                <li class="p-0"><a href="{{ mirror.get_absolute_url }}">{{ mirror.title }}</a></li>
@@ -64,52 +64,52 @@
                 {% if populated %}
                     <div class="lower d-flex justify-content-between align-items-center{{ is_paginated|yesno:" paginated," }}">
                     <div class="title_sub">
-                    <span class="nice-filter">hoş:&nbsp;&nbsp;<a title="tüm zamanların en iyileri" href="{{ topic.get_absolute_url }}{% if mode != "nice" %}?a=nice{% endif %}" {% if mode == "nice" %}class="active" {% endif %}>{% trans "all" context "nicefilter" %}</a>
+                    <span class="nice-filter">{% trans "nice" %}:&nbsp;&nbsp;<a title="{% trans "most liked entries of all time" %}" href="{{ topic.get_absolute_url }}{% if mode != "nice" %}?a=nice{% endif %}" {% if mode == "nice" %}class="active" {% endif %}>{% trans "all" context "nicefilter" %}</a>
                         <span class="sep">|</span>
-                        <a title="günün en iyileri" href="{{ topic.get_absolute_url }}{% if mode != "nicetoday" %}?a=nicetoday{% endif %}" {% if mode == "nicetoday" %}class="active" {% endif %}>bugün</a>
+                        <a title="{% trans "most liked entries of today" %}" href="{{ topic.get_absolute_url }}{% if mode != "nicetoday" %}?a=nicetoday{% endif %}" {% if mode == "nicetoday" %}class="active" {% endif %}>{% trans "today" %}</a>
                     </span>
 
-                        <a data-toggle="dropdown" class="expand topic-search-expander" role="button" tabindex="0">başlıkta ara</a>
+                        <a data-toggle="dropdown" class="expand topic-search-expander" role="button" tabindex="0">{% trans "search in topic" %}</a>
 
                         <div class="dropdown-menu no-arrows no-collapse icon-assisted topic-dropdown" data-orientation="bottom-start">
                             <a class="dropdown-item" href="{{ topic.get_absolute_url }}?a=today">
                                     <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <use href="#calendar"></use>
                                     </svg>
-                                bugün
+                                {% trans "today" %}
                             </a>
                             <a class="dropdown-item" href="{{ topic.get_absolute_url }}?a=links">
                                 <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <use href="#link"></use>
                                 </svg>
-                                bağlantılar
+                                {% trans "links" %}
                             </a>
                             {% if topic.is_ama %}
                                 <a class="dropdown-item" href="{{ topic.get_absolute_url }}?a=answered">
                                     <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <use href="#comment"></use>
                                     </svg>
-                                    yanıtlar
+                                    {% trans "with replies" %}
                                 </a>
                             {% endif %}
                             <a class="dropdown-item" href="{{ topic.get_absolute_url }}?a=images">
                                 <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <use href="#images"></use>
                                 </svg>
-                                görseller
+                                {% trans "images" %}
                             </a>
                             {% if user.is_authenticated %}
                                 <a class="dropdown-item" href="{{ topic.get_absolute_url }}?a=search&keywords=@{{ user.username }}">
                                     <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <use href="#person"></use>
                                     </svg>
-                                    benim girdilerim
+                                    {% trans "my entries" %}
                                 </a>
                                 <a class="dropdown-item" href="{{ topic.get_absolute_url }}?a=acquaintances">
                                     <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <use href="#people"></use>
                                     </svg>
-                                    takibimdekiler
+                                    {% trans "acquaintances" %}
                                 </a>
                             {% endif %}
 
@@ -117,12 +117,12 @@
                                 <form method="GET" action="{{ topic.get_absolute_url }}">
                                     <div class="input-group">
                                         <input type="hidden" name="a" value="search">
-                                        <input name="keywords" id="in_topic_search" class="searchbox-text form-control" type="text" placeholder="kelimeler veya @yazar" %}" aria-label="kelimeler veya @yazar" required>
+                                        <input name="keywords" id="in_topic_search" class="searchbox-text form-control" type="text" placeholder="{% trans "words or @author" %}" aria-label="{% trans "words or @author" %}" required>
                                         <div class="input-group-append">
                                             <button class="btn btn-django-link" type="submit">
                                                 <svg fill="currentColor" height="16" width="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                                     <use href="#search"></use>
-                                                    <title>Ara</title>
+                                                    <title>{% translate "Search" %}</title>
                                                 </svg>
                                             </button>
                                         </div>
@@ -136,7 +136,7 @@
                             <a role="button" tabindex="0" class="position-relative snap-user-content" style="top: -2px">
                                 <svg fill="currentColor" width="18" height="18" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
                                     <use href="#edit"></use>
-                                    <title>Girdi içeriğine geç</title>
+                                    <title>{% trans "Skip to entry content area" %}</title>
                                 </svg>
                             </a>
                         {% endif %}
@@ -154,7 +154,7 @@
                     {# previous entries button #}
                     {% if previous_entries_count > 0 %}
                         {% blocktrans asvar prev count previous_count=previous_entries_count %}{{ previous_count }} more entry{% plural %}{{ previous_count }} more entries{% endblocktrans %}
-                        <a title="hepsini göster" href="{% if entry_permalink %}{{ topic.get_absolute_url }}{% endif %}?page={{ previous_entries_page }}" class="more-entries-button mt-2">{{ prev }}</a>
+                        <a title="{% trans "show all" %}" href="{% if entry_permalink %}{{ topic.get_absolute_url }}{% endif %}?page={{ previous_entries_page }}" class="more-entries-button mt-2">{{ prev }}</a>
                     {% endif %}
                     {# end of previous entries button #}
 
@@ -178,11 +178,11 @@
                                 {# topic has entries but parameters returned no corresponding entries #}
                                 <p class="mt-2">
                                     {% if mode == "novices" %}
-                                        <span>adayların oluşturduğu girdi yok</span>
+                                        <span>{% trans "there has been no entries written by novices today." %}</span>
                                     {% elif mode == "regular" %}
-                                        <span>bu başlıkta yazarların girdi'si yok</span>
+                                        <span>{% trans "this topic has no entries written by <u>authors</u>." %}</span>
                                     {% else %}
-                                        <span>aradığınız kriterlerde girdi bulunamadı</span>
+                                        <span>{% trans "no suitable entries were found with the criteria you specified." %}</span>
                                     {% endif %}
                                 </p>
 
@@ -199,14 +199,14 @@
                     {# subsequent entries button #}
                     {% if subsequent_entries_count > 0 %}
                         {% blocktrans asvar subsq count subsequent_count=subsequent_entries_count %}{{ subsequent_count }} more entry{% plural %}{{ subsequent_count }} more entries{% endblocktrans %}
-                        <a title="hepsini göster" href="{% if entry_permalink %}{{ topic.get_absolute_url }}{% endif %}?page={{ subsequent_entries_page }}" class="more-entries-button">{{ subsq }}</a>
+                        <a title="{% trans "show all" %}" href="{% if entry_permalink %}{{ topic.get_absolute_url }}{% endif %}?page={{ subsequent_entries_page }}" class="more-entries-button">{{ subsq }}</a>
                     {% endif %}
                     {# end of subsequent entries button #}
 
 
                 {% else %}
                     {# Topic does exist but has no entries #}
-                    <p>insanlık böyle bir şeyden haberdar değil</p>
+                    <p>{% trans "no such thing known to humankind." %}</p>
 
                     {% if not banned %}
                         {% include "dictionary/includes/forms/wish.html" %}
@@ -219,10 +219,10 @@
                     <h1 class="topic-title"><a href="{% url 'topic-search' %}?q={{ topic.title }}">{{ topic.title }}</a></h1>
                 </header>
 
-                <p>insanlık böyle bir şeyden haberdar değil</p>
+                <p>{% trans "no such thing known to humankind." %}</p>
 
                 {% if not valid %}
-                    <p>zaten lanet olsun böyle başlığa</p>
+                    <p>{% trans "curses to such a topic anyway." %}</p>
                 {% else %}
                     {% include "dictionary/includes/forms/wish.html" %}
                 {% endif %}
@@ -278,7 +278,7 @@
                             <div>
                                 <button type="button" class="btn draft-async px-0" data-title="{{ topic.title }}">{% trans "keep this as draft" %}</button>
                             </div>
-                            <button type="submit" class="btn btn-django-link"{% if user.is_suspended %} title="gerekli yetkiye sahip değilsiniz" disabled{% endif %}>yayınla</button>
+                            <button type="submit" class="btn btn-django-link"{% if user.is_suspended %} title="{% trans "you lack the required permissions." %}" disabled{% endif %}>{% trans "publish" %}</button>
                         </div>
                     </form>
                 </section>
@@ -296,7 +296,7 @@
         {% with categories=topic.category.all %}
             {% if categories or perms.dictionary.can_suggest_categories %}
                 <section class="topic-categories-list">
-                    <h2>başlığın kanalları</h2>
+                    <h2>{% trans "belonging channels" %}</h2>
                     {% if categories %}
                         <ul>
                             {% for category in categories %}
@@ -310,12 +310,12 @@
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <span>başlık henüz sınıflandırılmamış</span>
+                        <span>{% trans "this topic is yet to be classified" %}</span>
                     {% endif %}
 
                     {% if not user.is_novice and perms.dictionary.can_suggest_categories and topic.allow_suggestions %}
                         <div class="dropdown mt-2">
-                            <a role="button" tabindex="0" id="suggestDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">kanal öner</a>
+                            <a role="button" tabindex="0" id="suggestDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "suggest channels" %}</a>
                             <div class="dropdown-menu no-collapse no-arrows tinybar" data-orientation="bottom-start" aria-labelledby="suggestDrop" style="max-height: 400px; overflow-y: scroll">
                                 <ul class="list-group pl-3 pr-2" style="min-width: 200px;">
                                     {% get_topic_suggestions user topic as categories_with_suggestions %}
@@ -330,13 +330,13 @@
                                                 <button type="button" class="btn btn-sm up{{ category.up|yesno:" btn-django-link," }}">
                                                     <svg fill="currentColor" width="10" height="10" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                                         <use href="#up"></use>
-                                                        <title>öner</title>
+                                                        <title>{% trans "suggest" %}</title>
                                                     </svg>
                                                 </button>
                                                 <button type="button" class="btn btn-sm{{ category.down|yesno:" btn-django-link," }}">
                                                     <svg fill="currentColor" width="10" height="10" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                                         <use href="#down"></use>
-                                                        <title>önerme</title>
+                                                        <title>{% trans "put down" %}</title>
                                                     </svg>
                                                 </button>
                                             </div>

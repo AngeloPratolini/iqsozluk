@@ -74,6 +74,9 @@ def print_topic_title(context):
 
     mode_repr = {
         "today": _("today's entries"),
+        "soran": _("soran başlıklar"),
+        "normal": _("tanımlar"),
+        "hayta": _("edepsizlik tepesi"),
         "popular": _("popular"),
         "novices": _("novices"),
         "nice": _("most liked entries of all time"),

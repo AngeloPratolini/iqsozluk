@@ -203,34 +203,11 @@ class LeftFrame {
             let topics = ""
 
             objectList.forEach(topic => {
-
-            const body = one("body")
-
-            // if(topic.title.slice(-1)==="?" && body.classList.value === "dark"){
-            // topics += `<li class=" soruluDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
-
-            // }
-            // else if(topic.title.slice(-1)==="?" && body.classList.value !== "dark"){
-            // topics += `<li class=" sorulu girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
-
-            // }
-            // else if(topic.title.charAt(0)==="!" && body.classList.value === "dark"){
-            // topics += `<li class="unlemliDARK girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
-
-            // }
-            // else if(topic.title.charAt(0)==="!" && body.classList.value !== "dark"){
-            // topics += `<li class="unlemli girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
-
-            // }
-            if(true) {
-            topics += `<li class="list-group-item girdi"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
-
-            }location.reload()
-            } )
+                topics += `<li class="list-group-item"><a href="${slugIdentifier}${topic.slug}/${params}">${notSafe(topic.title)}<small class="total_entries">${topic.count && topic.count !== "0" ? topic.count : ""}</small></a></li>`
+            })
 
             if (topics) {
                 topicList.innerHTML = topics
-
             }
         }
     }
@@ -271,6 +248,18 @@ class LeftFrame {
 
     static refreshPopulate () {
         LeftFrame.populate("today", 1, null, null, true)
+    }
+
+    static refreshPopulateSoran () {
+        LeftFrame.populate("soran", 1, null, null, true)
+    }
+
+    static refreshPopulateNormal () {
+        LeftFrame.populate("normal", 1, null, null, true)
+    }
+
+    static refreshPopulateHayta () {
+        LeftFrame.populate("hayta", 1, null, null, true)
     }
 }
 
@@ -347,6 +336,9 @@ Handle("a#show_more", "click", function () {
 })
 
 Handle("#refresh_bugun", "click", LeftFrame.refreshPopulate)
+Handle("#refresh_soran", "click", LeftFrame.refreshPopulateSoran)
+Handle("#refresh_normal", "click", LeftFrame.refreshPopulateNormal)
+Handle("#refresh_hayta", "click", LeftFrame.refreshPopulateHayta)
 
 Handler(".exclusion-button", "click", function () {
     this.closest("div").parentNode.querySelector(".exclusion-settings").classList.toggle("dj-hidden")

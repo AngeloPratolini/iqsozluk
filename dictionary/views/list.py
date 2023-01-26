@@ -334,6 +334,9 @@ class TopicEntryList(EntryCreateMixin, IntegratedFormMixin, ListView):
     modes = (
         "regular",
         "today",
+        "soran",
+        "normal",
+        "hayta",
         "popular",
         "history",
         "nice",
@@ -366,7 +369,16 @@ class TopicEntryList(EntryCreateMixin, IntegratedFormMixin, ListView):
         return self.topic.entries.all()
 
     def today(self):
-        return self.topic.entries.filter(date_created__gte=time_threshold(hours=240))
+        return self.topic.entries.filter(date_created__gte=time_threshold(hours=480))
+
+    def soran(self):
+        return self.topic.entries.filter(title__endswith="?")
+
+    def normal(self):
+        return self.topic.entries.filter(date_created__gte=time_threshold(hours=24)).exclude(title__endswith="?").exclude(title__startswith="!")
+
+    def hayta(self):
+        return self.topic.entries.filter(title__startswith="!")
 
     def popular(self):
         return self.regular() if self.topic.is_pinned else self.today()
@@ -524,7 +536,7 @@ class TopicEntryList(EntryCreateMixin, IntegratedFormMixin, ListView):
             show_subsequent, show_previous = False, False
 
             # view_mode specific settings
-            if self.view_mode in ("popular", "today", "following", "novices"):
+            if self.view_mode in ("popular", "today", "soran", "normal", "hayta", "following", "novices"):
                 show_previous = True
             elif self.view_mode in (
                 "history",

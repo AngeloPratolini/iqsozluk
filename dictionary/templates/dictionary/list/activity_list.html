@@ -1,10 +1,10 @@
 {% extends "dictionary/base.html" %}
 {% load filters functions i18n %}
 
-{% block title %}senato{% endblock %}
+{% block title %}{% trans "activity" context "titleblock" %}{% endblock %}
 {% block content %}
     <div class="left-frame-in">
-        <h1 class="h4 description"><strong>senato</strong></h1>
+        <h1 class="h4 description"><strong>{% trans "activity" context "titleblock" %}</strong></h1>
 
         {% if user.allow_site_announcements %}
             <ul class="list-group topic-list">
@@ -14,7 +14,7 @@
                             <svg class="mr-2" fill="currentColor" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#megaphone"></use>
                             </svg>
-                            <span>site duyuruları</span>
+                            <span>{% trans "site announcements" %}</span>
                         </div>
                         {% if user.unread_topic_count.announcements > 0 %}
                             <small class="total_entries">{{ user.unread_topic_count.announcements }}</small>
@@ -31,7 +31,7 @@
                 {% if user.unread_topic_count.topics > 0 %}
                     <form method="post">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-sm" onclick="return confirm('emin misiniz?')">hepsini okundu olarak işaretle</button>
+                        <button type="submit" class="btn btn-sm" onclick="return confirm('{% trans "Are you sure?" %}')">{% trans "mark all topics as read" %}</button>
                     </form>
                 {% endif %}
             </small>

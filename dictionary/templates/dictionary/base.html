@@ -7,24 +7,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{% block description %}{% endblock %}" />
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-    
-        gtag('config', 'G-SLLCGVQQWW');
-    </script>
     {% block metatags %}{% endblock %}
 
     {# In production, some static files should be served together. #}
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'dictionary/img/faviconiq.ico' %}?version=1"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'dictionary/img/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static "dictionary/css/helpers.css" %}">
     <link rel="stylesheet" href="{% static "dictionary/css/style.css" %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap">
-    
+
     <script defer src="{% url 'javascript-catalog' %}"></script>
-    <script defer src="{% static 'dictionary/js/dist/index2.js' %}?version=2"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLLCGVQQWW"></script>
+    <script defer src="{% static 'dictionary/js/dist/index.js' %}"></script>
     <title>{% block supertitle %}{% block title %}{% endblock %} - {{ request.site.name }}{% endblock %}</title>
 </head>
 <body class="{{ request.theme }}{% block bodyclass %}{% endblock %}" {% block bodyattr %}{% endblock %} id="{{ user.is_authenticated|yesno:"au,ua" }}">
@@ -87,7 +79,7 @@
                             <svg fill="currentColor" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#bell"></use>
                             </svg>
-                            <span>senato</span>
+                            <span>{% trans "activity" %}</span>
                         </a>
                     {% endwith %}
                     {% with count=user.unread_message_count %}
@@ -172,9 +164,13 @@
         <nav class="sub-nav" aria-label="{% trans "Category menu" %}">
             <ul class="mobile-only">
                 {% render_header_link "today" %}
+                {% render_header_link "soran" %}
+                {% render_header_link "normal" %}
+                {% if user.is_authenticated %}
+                {% render_header_link "hayta" %}
+                {% endif %}
                 {% render_header_link "popular" %}
                 {% render_header_link "top" %}
-                {% render_header_link "today-in-history" %}
                 {% render_header_link "acquaintances" %}
 
                 {% if user.is_authenticated %}
@@ -210,12 +206,12 @@
                             </svg>
                             {% trans "followups" %}
                         </a>
-                        <a href="{% url "topic_list" slug="novices" %}" class="dropdown-item">
+                        <!-- <a href="{% url "topic_list" slug="novices" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#experimental"></use>
                             </svg>
                             {% trans "novices" %}
-                        </a>
+                        </a> -->
                         <a href="{% url "topic_list" slug="search" %}" class="dropdown-item">
                             <svg fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#search"></use>
@@ -256,16 +252,18 @@
             </ul>
 
             <ul class="desktop-only">
-
-                {% render_header_link 'today' %}
-                {% render_header_link 'popular' %}
-                {% render_header_link 'top' %}
-                {% render_header_link 'acquaintances' %}
+                {% render_header_link "today" %}
+                {% render_header_link "soran" %}
+                {% render_header_link "normal" %}
+                {% if user.is_authenticated %}
+                {% render_header_link "hayta" %}
+                {% endif %}
+                {% render_header_link "popular" %}
+                {% render_header_link "top" %}
+                {% render_header_link "acquaintances" %}
                 {% render_header_link 'drafts' %}
                 {% render_header_link 'followups' %}
                 {% render_header_link 'wishes' %}
-                {% render_header_link 'novices' %}
-                {% render_header_link 'today-in-history' %}
 
                 {% for category in nav_categories|slice:":4" %}
                     <li {% if left_frame.slug == category.slug %}class="active"{% endif %} data-lf-slug="{{ category.slug }}">
@@ -280,13 +278,12 @@
                 </li>
 
                 <div class="more_tags_dropdown dropdown-menu" aria-labelledby="category-expand">
+
                     {% for category in nav_categories|slice:"4:12" %}
                         <a title="{{ category.description }}" data-lf-slug="{{ category.slug }}" class="dropdown-item{% if left_frame.slug == category.slug %} active{% endif %}" href="{{ category.get_absolute_url }}">#{{ category.name }}</a>
                     {% endfor %}
 
-                    {% if nav_categories|slice:"4:12" %}
-                        <div class="dropdown-divider"></div>
-                    {% endif %}
+                    <div class="dropdown-divider"></div>
                     <a title="{% trans "topics with no channels" %}" class="dropdown-item{% if left_frame.slug == "uncategorized" %} active{% endif %}" data-lf-slug="uncategorized" href="{% url 'topic_list' slug='uncategorized' %}">{% trans "uncategorized" %}</a>
                     <a href="{% url 'category_list' %}" class="dropdown-item regular">{% trans "all channels" %}</a>
                 </div>
